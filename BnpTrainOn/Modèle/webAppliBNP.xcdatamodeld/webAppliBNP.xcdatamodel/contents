@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F1021" minimumToolsVersion="Automatic">
+    <entity name="CATEGORIE" representedClassName=".CATEGORIE" syncable="YES">
+        <attribute name="cat_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="cat_nom" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="COLLABORATEUR" representedClassName=".COLLABORATEUR" syncable="YES">
+        <attribute name="col_est_responsable" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="col_fonction" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="col_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="col_mail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="col_nom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="col_prenom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="col_telephone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ent_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="ENTREPRISE" representedClassName=".ENTREPRISE" syncable="YES">
+        <attribute name="ent_adresse" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ent_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="ent_nom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ent_telephone" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="LOGIN" representedClassName=".LOGIN" syncable="YES">
+        <attribute name="log_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="log_password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="log_username" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="MODULE" representedClassName=".MODULE" syncable="YES">
+        <attribute name="cat_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="mod_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mod_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="mod_nom" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="SESSION" representedClassName=".SESSION" syncable="YES">
+        <attribute name="ses_date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ses_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ses_heure_deb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ses_heure_fin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ses_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="ses_nom" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="SESSIONCOLLABORATEUR" representedClassName=".SESSIONCOLLABORATEUR" syncable="YES">
+        <attribute name="col_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="ses_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="SESSIONMODULE" representedClassName=".SESSIONMODULE" syncable="YES">
+        <attribute name="mod_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="ses_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="TMPANNEENCOUR" representedClassName=".TMPANNEENCOUR" syncable="YES">
+        <attribute name="value_annee" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="TMPMOISENCOUR" representedClassName=".TMPMOISENCOUR" syncable="YES">
+        <attribute name="value_mois" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="TMPSESSION" representedClassName=".TMPSESSION" syncable="YES">
+        <attribute name="ses_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="TMPSESSIONCONTACT" representedClassName=".TMPSESSIONCONTACT" syncable="YES">
+        <attribute name="col_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="TMPSESSIONMODULE" representedClassName=".TMPSESSIONMODULE" syncable="YES">
+        <attribute name="mod_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CATEGORIE" positionX="0" positionY="99" width="128" height="75"/>
+        <element name="COLLABORATEUR" positionX="-54" positionY="45" width="128" height="165"/>
+        <element name="ENTREPRISE" positionX="-63" positionY="9" width="128" height="105"/>
+        <element name="LOGIN" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="MODULE" positionX="-18" positionY="90" width="128" height="105"/>
+        <element name="SESSION" positionX="18" positionY="108" width="128" height="135"/>
+        <element name="SESSIONCOLLABORATEUR" positionX="-9" positionY="108" width="128" height="75"/>
+        <element name="SESSIONMODULE" positionX="-18" positionY="99" width="128" height="75"/>
+        <element name="TMPSESSION" positionX="0" positionY="108" width="128" height="60"/>
+        <element name="TMPSESSIONCONTACT" positionX="-9" positionY="99" width="128" height="60"/>
+        <element name="TMPSESSIONMODULE" positionX="-18" positionY="90" width="128" height="60"/>
+        <element name="TMPMOISENCOUR" positionX="-18" positionY="90" width="128" height="60"/>
+        <element name="TMPANNEENCOUR" positionX="-9" positionY="99" width="128" height="60"/>
+    </elements>
+</model>

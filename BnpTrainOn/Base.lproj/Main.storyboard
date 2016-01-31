@@ -41,7 +41,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="webAppliBNP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="BnpTrainOn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -648,7 +648,7 @@
         <!--LEASE DIAG-->
         <scene sceneID="5LH-ZE-HOO">
             <objects>
-                <viewController id="O8d-4V-Orx" customClass="MainViewController" customModule="webAppliBNP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="O8d-4V-Orx" customClass="MainViewController" customModule="BnpTrainOn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Mcx-LX-4SE"/>
                         <viewControllerLayoutGuide type="bottom" id="Qta-SP-66H"/>
@@ -1073,7 +1073,7 @@
         <!--GESTION PLANNING-->
         <scene sceneID="s71-YC-2KB">
             <objects>
-                <tableViewController title="GESTION PLANNING" id="Gg3-PH-jcQ" customClass="PlanningSessionTableViewController" customModule="webAppliBNP" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="GESTION PLANNING" id="Gg3-PH-jcQ" customClass="PlanningSessionTableViewController" customModule="BnpTrainOn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" id="yG6-Bh-QHh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1183,7 +1183,7 @@
         <!--Planning-->
         <scene sceneID="6xA-rg-Jfg">
             <objects>
-                <viewController title="Planning" id="Mug-XF-BpL" customClass="ConsultationPlanningViewController" customModule="webAppliBNP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Planning" id="Mug-XF-BpL" customClass="ConsultationPlanningViewController" customModule="BnpTrainOn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5c5-4Y-YD0"/>
                         <viewControllerLayoutGuide type="bottom" id="srG-Ez-Ykj"/>
@@ -3314,13 +3314,13 @@
         <!--GESTION CLIENTS-->
         <scene sceneID="LqL-3h-0z0">
             <objects>
-                <tableViewController title="GESTION CLIENTS" id="cKE-gy-41n" customClass="ListeContactViewController" customModule="webAppliBNP" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="GESTION CLIENTS" id="cKE-gy-41n" customClass="ListeContactViewController" customModule="BnpTrainOn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="46" sectionHeaderHeight="28" sectionFooterHeight="28" id="TmZ-Wa-vNQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCell" rowHeight="46" id="kuU-do-1qR" customClass="CellContactTableViewCell" customModule="webAppliBNP" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCell" rowHeight="46" id="kuU-do-1qR" customClass="CellContactTableViewCell" customModule="BnpTrainOn" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kuU-do-1qR" id="scu-V0-Xd4">
@@ -3422,7 +3422,7 @@
         <!--Ajout contact-->
         <scene sceneID="UtK-22-9N4">
             <objects>
-                <viewController title="Ajout contact" id="6lb-7V-YoE" customClass="AjoutContactViewController" customModule="webAppliBNP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Ajout contact" id="6lb-7V-YoE" customClass="AjoutContactViewController" customModule="BnpTrainOn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qvS-RG-sCX"/>
                         <viewControllerLayoutGuide type="bottom" id="Egz-oZ-7Si"/>
@@ -3684,7 +3684,7 @@
         <!--DETAIL CONTACT-->
         <scene sceneID="Ucl-7A-nbk">
             <objects>
-                <viewController title="DETAIL CONTACT" id="F97-qi-7MK" customClass="DetailContactViewController" customModule="webAppliBNP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="DETAIL CONTACT" id="F97-qi-7MK" customClass="DetailContactViewController" customModule="BnpTrainOn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dqc-X5-CLX"/>
                         <viewControllerLayoutGuide type="bottom" id="iDs-GZ-VdA"/>
@@ -3950,7 +3950,7 @@
         <!--GÉRER SESSION-->
         <scene sceneID="WO0-7D-vrK">
             <objects>
-                <viewController title="GÉRER SESSION" id="08F-DL-6d4" customClass="AjoutSessionViewController" customModule="webAppliBNP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="GÉRER SESSION" id="08F-DL-6d4" customClass="AjoutSessionViewController" customModule="BnpTrainOn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HqA-67-RGV"/>
                         <viewControllerLayoutGuide type="bottom" id="xKg-Ik-0bF"/>
@@ -4190,7 +4190,7 @@
         <!--SELECTION MODULES-->
         <scene sceneID="Zjp-Xf-NFt">
             <objects>
-                <tableViewController title="SELECTION MODULES" id="y7W-Kj-CZf" customClass="SelectionModulesTableViewController" customModule="webAppliBNP" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="SELECTION MODULES" id="y7W-Kj-CZf" customClass="SelectionModulesTableViewController" customModule="BnpTrainOn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="98j-s4-2rQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4219,13 +4219,13 @@
         <!--SELECTION CONTACTS-->
         <scene sceneID="fGA-Yp-QNV">
             <objects>
-                <tableViewController title="SELECTION CONTACTS" id="Y2R-dZ-M5c" customClass="SelectionContactsTableViewController" customModule="webAppliBNP" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="SELECTION CONTACTS" id="Y2R-dZ-M5c" customClass="SelectionContactsTableViewController" customModule="BnpTrainOn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="28" sectionFooterHeight="28" id="EO7-ya-Ig9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellContact" rowHeight="48" id="I5S-we-YJM" customClass="CellSelectionContactTableViewCell" customModule="webAppliBNP" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellContact" rowHeight="48" id="I5S-we-YJM" customClass="CellSelectionContactTableViewCell" customModule="BnpTrainOn" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I5S-we-YJM" id="1q0-zd-HUD">
@@ -4296,7 +4296,7 @@
         <!--DETAIL ENTREPRISE-->
         <scene sceneID="icz-VP-rxL">
             <objects>
-                <viewController title="DETAIL ENTREPRISE" id="s81-hS-73m" customClass="DetailEntrepriseViewController" customModule="webAppliBNP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="DETAIL ENTREPRISE" id="s81-hS-73m" customClass="DetailEntrepriseViewController" customModule="BnpTrainOn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pzG-VM-r13"/>
                         <viewControllerLayoutGuide type="bottom" id="shN-Ep-vqx"/>
@@ -4595,13 +4595,13 @@
         <!--Catalogue formations-->
         <scene sceneID="Lml-TG-7gj">
             <objects>
-                <tableViewController title="Catalogue formations" id="EU9-Rw-E1X" customClass="CategorieModulesTableViewController" customModule="webAppliBNP" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Catalogue formations" id="EU9-Rw-E1X" customClass="CategorieModulesTableViewController" customModule="BnpTrainOn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" id="Jod-qR-cjZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="46" id="Uk9-AE-yAD" customClass="CellCategorieModuleController" customModule="webAppliBNP" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="46" id="Uk9-AE-yAD" customClass="CellCategorieModuleController" customModule="BnpTrainOn" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uk9-AE-yAD" id="HfU-DT-IaW">
@@ -4682,13 +4682,13 @@
         <!--Liste Module Table View Controller-->
         <scene sceneID="6Jh-1v-qC9">
             <objects>
-                <tableViewController id="shs-Lx-sQr" customClass="ListeModuleTableViewController" customModule="webAppliBNP" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="shs-Lx-sQr" customClass="ListeModuleTableViewController" customModule="BnpTrainOn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="59" sectionHeaderHeight="28" sectionFooterHeight="28" id="f9e-j6-omg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="moduleCell" rowHeight="59" id="qPg-xt-aNt" customClass="CellModuleTableViewCell" customModule="webAppliBNP" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="moduleCell" rowHeight="59" id="qPg-xt-aNt" customClass="CellModuleTableViewCell" customModule="BnpTrainOn" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="59"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qPg-xt-aNt" id="GpU-eY-Uil">
@@ -4751,7 +4751,7 @@
         <!--Ajout Entreprise View Controller-->
         <scene sceneID="qbf-Eo-R97">
             <objects>
-                <viewController id="ixl-gq-RHV" customClass="AjoutEntrepriseViewController" customModule="webAppliBNP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ixl-gq-RHV" customClass="AjoutEntrepriseViewController" customModule="BnpTrainOn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VcH-1q-CzE"/>
                         <viewControllerLayoutGuide type="bottom" id="wqQ-IF-d0p"/>
@@ -4940,7 +4940,7 @@
         <!--Detail Module View Controller-->
         <scene sceneID="Xcr-NG-iTW">
             <objects>
-                <viewController id="ule-TW-1Lk" customClass="DetailModuleViewController" customModule="webAppliBNP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ule-TW-1Lk" customClass="DetailModuleViewController" customModule="BnpTrainOn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tmk-bn-ud3"/>
                         <viewControllerLayoutGuide type="bottom" id="OnG-Wg-ZAl"/>
@@ -5026,6 +5026,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="S9e-ji-35u"/>
-        <segue reference="XXa-0d-493"/>
+        <segue reference="ZOe-Xo-TNC"/>
     </inferredMetricsTieBreakers>
 </document>

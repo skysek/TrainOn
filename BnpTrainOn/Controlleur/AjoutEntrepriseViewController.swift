@@ -88,7 +88,7 @@ class AjoutEntrepriseViewController: UIViewController {
                     print("Erreur lors de la récupération des données de la table ENTREPRISE")
                 }
                 
-                let alert = UIAlertView(title: "Ajout réussi", message: "L'entreprise a bien été ajouté.", delegate: nil, cancelButtonTitle: "OK")
+                let alert = UIAlertView(title: NSLocalizedString("Ajout réussi", comment: "Titre message alerte"), message: NSLocalizedString("L'entreprise a bien été ajouté.", comment: "Titre message alerte"), delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
                 
             } else {
@@ -120,7 +120,7 @@ class AjoutEntrepriseViewController: UIViewController {
             
             
         } else {
-            let alert = UIAlertView(title: "Validation échouée", message: "Veuillez saisir les différents champs", delegate: nil, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: NSLocalizedString("Validation échouée", comment: "Titre message alerte"), message: NSLocalizedString("Veuillez saisir les différents champs", comment: "message alerte"), delegate: nil, cancelButtonTitle: "OK")
             alert.show()
         }
         

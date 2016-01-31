@@ -333,9 +333,9 @@ class AjoutSessionViewController: UIViewController {
             }
             
             if compteurContacts > 1 {
-                contactSelecLabel.text = String(compteurContacts) + " contacts sélectionnés"
+                contactSelecLabel.text = String(compteurContacts) + " " + NSLocalizedString("contacts sélectionnés" , comment: "pour afficher un nombre de selection")
             } else {
-                contactSelecLabel.text = String(compteurContacts) + " contact sélectionné"
+                contactSelecLabel.text = String(compteurContacts) + " " + NSLocalizedString("contact sélectionné" , comment: "pour afficher un nombre de selection")
             }
         } catch {
             print("Erreur vérification dans la table temporaire de contact")
@@ -353,9 +353,9 @@ class AjoutSessionViewController: UIViewController {
             }
             
             if compteurModules > 1 {
-                formationLabel.text = String(compteurModules) + " modules sélectionnés"
+                formationLabel.text = String(compteurModules) +  " " + NSLocalizedString("modules sélectionnés" , comment: "pour afficher un nombre de selection")
             } else {
-                formationLabel.text = String(compteurModules) + " module sélectionné"
+                formationLabel.text = String(compteurModules) + NSLocalizedString("module sélectionné" , comment: "pour afficher un nombre de selection")
             }
         } catch {
             print("Erreur vérification dans la table temporaire des modules")
@@ -770,11 +770,11 @@ class AjoutSessionViewController: UIViewController {
             isCreation = 0 // on passe (ou reste) en modification
             sessionID = sesID
             
-            let alert = UIAlertView(title: "Ajout réussi", message: "La session a bien été ajoutée.", delegate: nil, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: NSLocalizedString("Ajout réussi" , comment: "message alerte"), message: "La session a bien été ajoutée.", delegate: nil, cancelButtonTitle: "OK")
             
             alert.show()
         } else {
-            let alert = UIAlertView(title: "Modification réussie", message: "La session a bien été modifiée.", delegate: nil, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: NSLocalizedString("Modification réussie" , comment: "message alerte"), message: NSLocalizedString("La session a bien été modifiée." , comment: "message alerte"), delegate: nil, cancelButtonTitle: "OK")
             alert.show()
         }
         

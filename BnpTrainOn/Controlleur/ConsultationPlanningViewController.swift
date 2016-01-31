@@ -1168,29 +1168,29 @@ class ConsultationPlanningViewController: UIViewController {
     func changeNameMonth(currentMonth: Int){
         switch currentMonth {
         case 1:
-            moisLabel.text = "Janvier"
+            moisLabel.text = NSLocalizedString("Janvier", comment: "mois calendrier")
         case 2:
-            moisLabel.text = "Février"
+            moisLabel.text =  NSLocalizedString("Février", comment: "mois calendrier")
         case 3:
-            moisLabel.text = "Mars"
+            moisLabel.text =  NSLocalizedString("Mars", comment: "mois calendrier")
         case 4:
-            moisLabel.text = "Avril"
+            moisLabel.text =  NSLocalizedString("Avril", comment: "mois calendrier")
         case 5:
-            moisLabel.text = "Mai"
+            moisLabel.text =  NSLocalizedString("Mai", comment: "mois calendrier")
         case 6:
-            moisLabel.text = "Juin"
+            moisLabel.text =  NSLocalizedString("Juin", comment: "mois calendrier")
         case 7:
-            moisLabel.text = "Juillet"
+            moisLabel.text =  NSLocalizedString("Juillet", comment: "mois calendrier")
         case 8:
-            moisLabel.text = "Aout"
+            moisLabel.text =  NSLocalizedString("Aout", comment: "mois calendrier")
         case 9:
-            moisLabel.text = "Septembre"
+            moisLabel.text =  NSLocalizedString("Septembre", comment: "mois calendrier")
         case 10:
-            moisLabel.text = "Octobre"
+            moisLabel.text =  NSLocalizedString("Octobre", comment: "mois calendrier")
         case 11:
-            moisLabel.text = "Novembre"
+            moisLabel.text =  NSLocalizedString("Novembre", comment: "mois calendrier")
         case 12:
-            moisLabel.text = "Décembre"
+            moisLabel.text =  NSLocalizedString("Décembre", comment: "mois calendrier")
         default:
             print("Défault")
         }

@@ -190,7 +190,7 @@ class AjoutContactViewController: UIViewController, UITextFieldDelegate {
                     print("Erreur lors de la récupération des données de la table MODULE")
                 }
                 
-                let alert = UIAlertView(title: "Ajout réussi", message: "Le contact a bien été ajouté.", delegate: nil, cancelButtonTitle: "OK")
+                let alert = UIAlertView(title: NSLocalizedString("Ajout réussi", comment: "Titre message alerte"), message: NSLocalizedString("Le contact a bien été ajouté.",comment: "Message Alerte"), delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
                
             } else {

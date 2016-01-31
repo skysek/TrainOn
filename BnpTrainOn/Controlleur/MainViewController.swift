@@ -279,7 +279,7 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.navigationItem.title = "BIENVENUE"
+        self.navigationItem.title = NSLocalizedString("BIENVENUE", comment: "accueil")
     }
     
     override func viewWillDisappear(animated: Bool) {

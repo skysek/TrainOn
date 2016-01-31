@@ -35,6 +35,9 @@ class ConsultationPlanningViewController: UIViewController {
     @IBOutlet var anneeLabel: UILabel!
     
     var sesID = NSNumber()
+    var jourEncour = 1
+
+    var createSession = 0
     
     var CollectionButtonMois = [UIButton]()
     
@@ -631,6 +634,10 @@ class ConsultationPlanningViewController: UIViewController {
         tabButton.removeAll()
         tabImgView.removeAll()
         tabLabel.removeAll()
+        
+        jourEncour = sender.tag
+        
+        print(jourEncour)
         
         //Récupération du mois et de l'année en cour dans des variables locales
         //Table TMPMOISENCOUR
@@ -1560,6 +1567,10 @@ class ConsultationPlanningViewController: UIViewController {
         changeColorButton()
     }
     
+    @IBAction func creationSession(sender: AnyObject) {
+        createSession = 1
+        performSegueWithIdentifier("showModifSession", sender: self)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -1572,8 +1583,18 @@ class ConsultationPlanningViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showModifSession" {
             let ajoutSessionViewController = segue.destinationViewController as! AjoutSessionViewController
-            ajoutSessionViewController.isCreation = 0
-            ajoutSessionViewController.sessionID = sesID
+            if createSession == 1 {
+                ajoutSessionViewController.isCreation = 1
+                ajoutSessionViewController.origine = "calendrier"
+                ajoutSessionViewController.moduleID = 0
+                ajoutSessionViewController.contactID = 0
+                createSession = 0
+            } else {
+                ajoutSessionViewController.isCreation = 0
+                ajoutSessionViewController.sessionID = sesID
+                ajoutSessionViewController.origine = "calendrier"
+                
+            }
         }
     }
 

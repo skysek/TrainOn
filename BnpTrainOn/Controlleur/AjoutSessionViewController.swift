@@ -30,6 +30,7 @@ class AjoutSessionViewController: UIViewController {
     var moduleEnCour = [MODULE]()
     
     var isCreation = 1
+    var origine = "module" // ou "contact" ou "calendrier"
     
     var database = [NSManagedObject]()
     let appliDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -59,7 +60,8 @@ class AjoutSessionViewController: UIViewController {
                 print("Erreur lors de la récupération des données de la table ENTREPRISE")
             }
             
-            if moduleID != 0 {
+            //if moduleID != 0 {
+            if origine == "module" {
                 //Table MODULE
                 let managedContextMod = appliDelegate.managedObjectContext
                 let fetchRequestMod = NSFetchRequest(entityName: "MODULE")
@@ -92,7 +94,8 @@ class AjoutSessionViewController: UIViewController {
                 }
   
             }
-            if contactID != 0 {
+            //if contactID != 0 {
+            if origine == "contact" {
                 do {
                     //Table SESSIONCOLLABORATEUR
                     let managedContextCol = appliDelegate.managedObjectContext
@@ -128,11 +131,18 @@ class AjoutSessionViewController: UIViewController {
                     print("Erreur lors de la récupération des données de la table MODULE")
                 }
             }
+            if origine == "calendrier" {
+                Globals.viderTablesGestionSesssion()
+            }
 
             
             //formationLabel.text = moduleEnCour[0].mod_nom
             contactSelecLabel.text = "0 contact sélectionné"
         } else {
+            if origine == "calendrier" {
+                Globals.viderTablesGestionSesssion()
+            }
+            
             //Table SESSION
             let managedContextSes = appliDelegate.managedObjectContext
             let fetchRequestSes = NSFetchRequest(entityName: "SESSION")

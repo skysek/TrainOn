@@ -88,58 +88,15 @@ class DetailContactViewController: UIViewController {
             
         }
         if segue.identifier == "showAddSessionFromContact" {
+            
+            Globals.viderTablesGestionSesssion()
+        
             //Table TMPSESSIONCONTACT
             let managedContextTmpSesCon = appliDelegate.managedObjectContext
-            let fetchRequestTmpSesCon = NSFetchRequest(entityName: "TMPSESSIONCONTACT")
-            //Table TMPSESSIONMODULE
-            let managedContextTmpSesMod = appliDelegate.managedObjectContext
-            let fetchRequestTmpSesMod = NSFetchRequest(entityName: "TMPSESSIONMODULE")
-            //Table TMPSESSION
-            let managedContextTmpSes = appliDelegate.managedObjectContext
-            let fetchRequestTmpSes = NSFetchRequest(entityName: "TMPSESSION")
-            
-            //On purge les tables temporaires
-            //let psc = self.appliDelegate.persistentStoreCoordinator
-            let deleteRequestTmpSesCon = NSBatchDeleteRequest(fetchRequest: fetchRequestTmpSesCon)
-            do {
-                /*
-                try psc.executeRequest(deleteRequestTmpSesCon, withContext: managedContextTmpSesCon)
-                */
-                try managedContextTmpSesCon.executeRequest(deleteRequestTmpSesCon)
-                try managedContextTmpSesCon.save()
-                print("Purge de la table TMPSESSIONCONTACT : réussie")
-            } catch {
-                print("Erreur lors de la purge de la table TMPSESSIONCONTACT")
-            }
-            
-            let deleteRequestTmpSesMod = NSBatchDeleteRequest(fetchRequest: fetchRequestTmpSesMod)
-            do {
-                /*
-                try psc.executeRequest(deleteRequestTmpSesMod, withContext: managedContextTmpSesMod)
-                */
-                try managedContextTmpSesMod.executeRequest(deleteRequestTmpSesMod)
-                try managedContextTmpSesMod.save()
-            } catch {
-                print("Erreur lors de la purge de la table TMPSESSIONMODULE")
-            }
-            
-            let deleteRequestTmpSes = NSBatchDeleteRequest(fetchRequest: fetchRequestTmpSes)
-            do {
-                /*
-                try psc.executeRequest(deleteRequestTmpSes, withContext: managedContextTmpSes)
-                */
-                try managedContextTmpSes.executeRequest(deleteRequestTmpSes)
-                try managedContextTmpSes.save()
-            } catch {
-                print("Erreur lors de la purge de la table TMPSESSION")
-            }
-            
-            
+            let entityDescriptionTmpSesCon = NSEntityDescription.entityForName("TMPSESSIONCONTACT", inManagedObjectContext: managedContextTmpSesCon)
+            let tmpsessioncon = TMPSESSIONCONTACT(entity: entityDescriptionTmpSesCon!, insertIntoManagedObjectContext: managedContextTmpSesCon)
                 
-                let entityDescriptionTmpSesCon = NSEntityDescription.entityForName("TMPSESSIONCONTACT", inManagedObjectContext: managedContextTmpSesCon)
-                let tmpsessioncon = TMPSESSIONCONTACT(entity: entityDescriptionTmpSesCon!, insertIntoManagedObjectContext: managedContextTmpSesCon)
-                
-                tmpsessioncon.col_id = colID
+            tmpsessioncon.col_id = colID
             do {
                 try managedContextTmpSesCon.save()
             } catch {
@@ -150,6 +107,8 @@ class DetailContactViewController: UIViewController {
             ajoutSessionViewController.moduleID = 0
             ajoutSessionViewController.contactID = colID
             ajoutSessionViewController.isCreation = 1
+            ajoutSessionViewController.origine = "contact"
+
         }
 
         //

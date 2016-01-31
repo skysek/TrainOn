@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="all" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -10,8 +10,6 @@
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="BNPP SANS.OTF">
-            <string>BNPPSans</string>
-            <string>BNPPSans</string>
             <string>BNPPSans</string>
             <string>BNPPSans</string>
             <string>BNPPSans</string>
@@ -619,7 +617,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="711.75" y="424.125"/>
+            <point key="canvasLocation" x="659.5" y="423.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vjb-2G-sNz">
@@ -1069,116 +1067,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hHP-R6-T0Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2112.75" y="424.125"/>
-        </scene>
-        <!--GESTION PLANNING-->
-        <scene sceneID="s71-YC-2KB">
-            <objects>
-                <tableViewController title="GESTION PLANNING" id="Gg3-PH-jcQ" customClass="PlanningSessionTableViewController" customModule="BnpTrainOn" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" id="yG6-Bh-QHh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="65" id="zYE-Fg-DCD">
-                                <rect key="frame" x="0.0" y="28" width="375" height="65"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zYE-Fg-DCD" id="e6w-kU-R34">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oliwood - Financement Locatif" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cX-yy-rg8">
-                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" name="BNPPSans" family="BNPP Sans" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="54" y="4" width="262" height="22"/>
-                                            </variation>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="liste_puce.png" translatesAutoresizingMaskIntoConstraints="NO" id="QKR-hx-kGq">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="23" y="8" width="10" height="10"/>
-                                            </variation>
-                                        </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="liste_icon-time.png" translatesAutoresizingMaskIntoConstraints="NO" id="8wu-im-vMO">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="54" y="34" width="16" height="16"/>
-                                            </variation>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11H00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EOm-ez-Bzd">
-                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" name="BNPPSans" family="BNPP Sans" pointSize="12"/>
-                                            <color key="textColor" red="0.67843137254901964" green="0.68235294117647061" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="78" y="32" width="42" height="21"/>
-                                            </variation>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11H00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGe-YT-SbN">
-                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" red="0.67843137249999996" green="0.68235294120000001" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="128" y="32" width="42" height="21"/>
-                                            </variation>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0Q-HH-QiO">
-                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.67843137249999996" green="0.68235294120000001" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="117" y="31" width="9" height="21"/>
-                                            </variation>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L. Kidman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEM-He-wx5">
-                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" red="0.67843137249999996" green="0.68235294120000001" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="255" y="32" width="61" height="21"/>
-                                            </variation>
-                                        </label>
-                                    </subviews>
-                                    <variation key="default">
-                                        <mask key="subviews">
-                                            <exclude reference="3cX-yy-rg8"/>
-                                            <exclude reference="QKR-hx-kGq"/>
-                                            <exclude reference="8wu-im-vMO"/>
-                                            <exclude reference="EOm-ez-Bzd"/>
-                                            <exclude reference="pGe-YT-SbN"/>
-                                            <exclude reference="y0Q-HH-QiO"/>
-                                            <exclude reference="CEM-He-wx5"/>
-                                        </mask>
-                                    </variation>
-                                    <variation key="heightClass=regular-widthClass=compact">
-                                        <mask key="subviews">
-                                            <include reference="3cX-yy-rg8"/>
-                                            <include reference="QKR-hx-kGq"/>
-                                            <include reference="8wu-im-vMO"/>
-                                            <include reference="EOm-ez-Bzd"/>
-                                            <include reference="pGe-YT-SbN"/>
-                                            <include reference="y0Q-HH-QiO"/>
-                                            <include reference="CEM-He-wx5"/>
-                                        </mask>
-                                    </variation>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Gg3-PH-jcQ" id="5nW-0O-VNR"/>
-                            <outlet property="delegate" destination="Gg3-PH-jcQ" id="pbd-CY-8eE"/>
-                        </connections>
-                    </tableView>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8n4-AP-Yrr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-620.25" y="1092.375"/>
         </scene>
         <!--Planning-->
         <scene sceneID="6xA-rg-Jfg">
@@ -3256,6 +3144,15 @@
                             </mask>
                         </variation>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="fTu-mK-xvU">
+                        <barButtonItem key="rightBarButtonItem" image="reduce_footer_icon_add_session.png" id="Sv8-Cs-hMU">
+                            <connections>
+                                <action selector="creationSession:" destination="Mug-XF-BpL" id="J8N-ui-f1B"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="anneeLabel" destination="cMP-id-FFG" id="4CZ-5j-Pdq"/>
@@ -3417,7 +3314,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qJe-hp-dc4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1104.75" y="1092.375"/>
+            <point key="canvasLocation" x="756.5" y="1251.5"/>
         </scene>
         <!--Ajout contact-->
         <scene sceneID="UtK-22-9N4">
@@ -3945,7 +3842,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QZa-eb-JNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1176.75" y="1686.375"/>
+            <point key="canvasLocation" x="1241.5" y="1746.5"/>
         </scene>
         <!--GÉRER SESSION-->
         <scene sceneID="WO0-7D-vrK">
@@ -5011,8 +4908,6 @@
         <image name="footer_icon_valider.png" width="46" height="33"/>
         <image name="footer_icone_ajouter-contact.png" width="30" height="30"/>
         <image name="formation_icon_fiche.png" width="30" height="44"/>
-        <image name="liste_icon-time.png" width="30" height="30"/>
-        <image name="liste_puce.png" width="20" height="20"/>
         <image name="moFormation_icon_more.png" width="51" height="51"/>
         <image name="photo_gestion_clients.png" width="411" height="272"/>
         <image name="photo_module_formation.png" width="411" height="273"/>
@@ -5025,7 +4920,7 @@
         <image name="session_icon_ajouter-contact.png" width="51" height="51"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="S9e-ji-35u"/>
-        <segue reference="ZOe-Xo-TNC"/>
+        <segue reference="g7h-K6-Stw"/>
+        <segue reference="XXa-0d-493"/>
     </inferredMetricsTieBreakers>
 </document>

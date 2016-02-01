@@ -9,46 +9,46 @@
 "Avril" = "April";
 
 /* accueil */
-"BIENVENUE" = "WELCOME";
+"BIENVENUE" = "Willkommen";
 
 /* mois calendrier */
-"Décembre" = "December";
+"Décembre" = "Dezember";
 
 /* mois calendrier */
-"Février" = "February";
+"Février" = "Februar";
 
 /* mois calendrier */
-"Janvier" = "January";
+"Janvier" = "Januar";
 
 /* mois calendrier */
-"Juillet" = "July";
+"Juillet" = "Juli";
 
 /* mois calendrier */
-"Juin" = "June";
+"Juin" = "Juni";
 
 /* Titre message alerte */
-"L'entreprise a bien été ajouté." = "Information Saved";
+"L'entreprise a bien été ajouté." = "Angaben wurden gespeichert";
 
 /* message alerte */
-"La session a bien été modifiée." = "Information Saved";
+"La session a bien été modifiée." = "Angaben wurden gespeichert";
 
 /* Message Alerte */
-"Le contact a bien été ajouté." = "Information Saved";
+"Le contact a bien été ajouté." = "Angaben wurden gespeichert";
 
 /* mois calendrier */
-"Mai" = "May";
+"Mai" = "Mai";
 
 /* mois calendrier */
-"Mars" = "March";
+"Mars" = "März";
 
 /* message alerte */
-"Modification réussie" = "Information Saved";
+"Modification réussie" = "Angaben wurden gespeichert";
 
 /* mois calendrier */
 "Novembre" = "November";
 
 /* mois calendrier */
-"Octobre" = "October";
+"Octobre" = "Oktober";
 
 /* mois calendrier */
 "Septembre" = "September";
@@ -60,14 +60,14 @@
 "Veuillez saisir les différents champs" = "All fields must be completed";
 
 /* pour afficher un nombre de selection */
-"contact sélectionné" = "contact selected";
+"contact sélectionné" = "kontakt";
 
 /* pour afficher un nombre de selection */
-"contacts sélectionnés" = "contacts select";
+"contacts sélectionnés" = "kontakts";
 
 /* pour afficher un nombre de selection */
-"module sélectionné" = "training selected";
+"module sélectionné" = "Schulung";
 
 /* pour afficher un nombre de selection */
-"modules sélectionnés" = "trainings selected";
+"modules sélectionnés" = "Schulungs";
 

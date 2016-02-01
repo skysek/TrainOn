@@ -1,5 +1,5 @@
 /* Class = "UILabel"; text = "RESPONSABLE DE L'ENTREPRISE"; ObjectID = "1Gt-5k-45g"; */
-"1Gt-5k-45g.text" = "RESPONSABLE";
+"1Gt-5k-45g.text" = "MANAGER";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "1yL-2C-DZY"; */
 "1yL-2C-DZY.text" = "Label";
@@ -8,7 +8,7 @@
 "1zD-nb-Mgz.text" = "Label";
 
 /* Class = "UILabel"; text = "FONCTION"; ObjectID = "2Hs-Fh-yCi"; */
-"2Hs-Fh-yCi.text" = "Job Title";
+"2Hs-Fh-yCi.text" = "Funktion";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "4og-3x-eAd"; */
 "4og-3x-eAd.text" = "Label";
@@ -17,16 +17,16 @@
 "4sY-3w-YiL.normalTitle" = "Password forgoten";
 
 /* Class = "UIButton"; normalTitle = "VALIDER"; ObjectID = "6UG-gs-rSF"; */
-"6UG-gs-rSF.normalTitle" = "VALDATE";
+"6UG-gs-rSF.normalTitle" = "Bestätigen";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "6b4-zc-iDc"; */
 "6b4-zc-iDc.text" = "Label";
 
 /* Class = "UIViewController"; title = "Ajout contact"; ObjectID = "6lb-7V-YoE"; */
-"6lb-7V-YoE.title" = "Add contact";
+"6lb-7V-YoE.title" = "Kontakt";
 
 /* Class = "UILabel"; text = "JEU"; ObjectID = "7OD-1W-Cmc"; */
-"7OD-1W-Cmc.text" = "THU";
+"7OD-1W-Cmc.text" = "DON";
 
 /* Class = "UIViewController"; title = "GÉRER SESSION"; ObjectID = "08F-DL-6d4"; */
 "08F-DL-6d4.title" = "MANAGE SESSION";
@@ -41,37 +41,37 @@
 "79p-hn-5BY.text" = "FROM";
 
 /* Class = "UILabel"; text = "PRENOM"; ObjectID = "A3p-Hz-he0"; */
-"A3p-Hz-he0.text" = "First Name";
+"A3p-Hz-he0.text" = "Vorname";
 
 /* Class = "UILabel"; text = "ENTREPRISE"; ObjectID = "Afr-vc-nal"; */
-"Afr-vc-nal.text" = "Company";
+"Afr-vc-nal.text" = "Unternehmen";
 
 /* Class = "UILabel"; text = "NOM"; ObjectID = "B6Z-yc-vwL"; */
-"B6Z-yc-vwL.text" = "Surname";
+"B6Z-yc-vwL.text" = "Nachname";
 
 /* Class = "UILabel"; text = "EMAIL"; ObjectID = "BVl-Cx-YmL"; */
 "BVl-Cx-YmL.text" = "EMAIL";
 
 /* Class = "UIButton"; normalTitle = "VALIDER"; ObjectID = "BYr-G4-PBB"; */
-"BYr-G4-PBB.normalTitle" = "VALIDATE";
+"BYr-G4-PBB.normalTitle" = "Bestätigen";
 
 /* Class = "UILabel"; text = "NOM"; ObjectID = "C18-5a-RO9"; */
-"C18-5a-RO9.text" = "Surname";
+"C18-5a-RO9.text" = "Nachname";
 
 /* Class = "UILabel"; text = "SAM"; ObjectID = "CE3-FR-fSD"; */
-"CE3-FR-fSD.text" = "SAT";
+"CE3-FR-fSD.text" = "SAM";
 
 /* Class = "UILabel"; text = "EMAIL"; ObjectID = "Cqj-KQ-dnC"; */
 "Cqj-KQ-dnC.text" = "EMAIL";
 
 /* Class = "UILabel"; text = "DATE"; ObjectID = "DPJ-3h-r8A"; */
-"DPJ-3h-r8A.text" = "DATE";
+"DPJ-3h-r8A.text" = "DATUM";
 
 /* Class = "UILabel"; text = "MAR"; ObjectID = "EIw-OH-3h4"; */
-"EIw-OH-3h4.text" = "TUE";
+"EIw-OH-3h4.text" = "DIE";
 
 /* Class = "UITableViewController"; title = "Catalogue formations"; ObjectID = "EU9-Rw-E1X"; */
-"EU9-Rw-E1X.title" = "TRAININGS SET";
+"EU9-Rw-E1X.title" = "Schulungs";
 
 /* Class = "UILabel"; text = "Novembre"; ObjectID = "F8c-Gg-jeK"; */
 "F8c-Gg-jeK.text" = "November";
@@ -80,22 +80,22 @@
 "F80-6e-xCr.text" = "Label";
 
 /* Class = "UIViewController"; title = "DETAIL CONTACT"; ObjectID = "F97-qi-7MK"; */
-"F97-qi-7MK.title" = "Contact Detail";
+"F97-qi-7MK.title" = "Kontakt";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "Fjh-4W-0yF"; */
 "Fjh-4W-0yF.text" = "Label";
 
 /* Class = "UILabel"; text = "DIM"; ObjectID = "HVA-JY-y02"; */
-"HVA-JY-y02.text" = "SUN";
+"HVA-JY-y02.text" = "SON";
 
 /* Class = "UILabel"; text = "IDENTIFIANT"; ObjectID = "Hbl-Lx-pZC"; */
-"Hbl-Lx-pZC.text" = "Login";
+"Hbl-Lx-pZC.text" = "Benutzername";
 
 /* Class = "UILabel"; text = "NOM"; ObjectID = "IUJ-nN-qym"; */
-"IUJ-nN-qym.text" = "Surname";
+"IUJ-nN-qym.text" = "Nachname";
 
 /* Class = "UILabel"; text = "MER"; ObjectID = "Idp-id-KuF"; */
-"Idp-id-KuF.text" = "WED";
+"Idp-id-KuF.text" = "MIT";
 
 /* Class = "UILabel"; text = "EMAIL"; ObjectID = "Ji1-Fy-IEk"; */
 "Ji1-Fy-IEk.text" = "EMAIL";
@@ -107,13 +107,13 @@
 "LEo-6U-V7B.normalTitle" = "Button";
 
 /* Class = "UIViewController"; title = "Planning"; ObjectID = "Mug-XF-BpL"; */
-"Mug-XF-BpL.title" = "Planning";
+"Mug-XF-BpL.title" = "Planung";
 
 /* Class = "UILabel"; text = "LEASE DIAG"; ObjectID = "NdT-p9-1af"; */
 "NdT-p9-1af.text" = "Train'ON";
 
 /* Class = "UILabel"; text = "BIENVENUE SUR L'APPLICATION DE"; ObjectID = "O9c-aQ-LoQ"; */
-"O9c-aQ-LoQ.text" = "WELCOM ON";
+"O9c-aQ-LoQ.text" = "Willkommen";
 
 /* Class = "UIBarButtonItem"; title = "+"; ObjectID = "OOH-RS-sQk"; */
 "OOH-RS-sQk.title" = "+";
@@ -128,28 +128,28 @@
 "Pfp-PU-Wrj.text" = "Label";
 
 /* Class = "UILabel"; text = "ENTREPRISE"; ObjectID = "QEc-Oh-Gtz"; */
-"QEc-Oh-Gtz.text" = "Company";
+"QEc-Oh-Gtz.text" = "Unternehmen";
 
 /* Class = "UILabel"; text = "5 contacts sélectionnés"; ObjectID = "QOQ-Hf-0ZU"; */
-"QOQ-Hf-0ZU.text" = "Selected contact";
+"QOQ-Hf-0ZU.text" = "kontakt";
 
 /* Class = "UILabel"; text = "VEN"; ObjectID = "RIc-JB-qIl"; */
-"RIc-JB-qIl.text" = "FRI";
+"RIc-JB-qIl.text" = "FRE";
 
 /* Class = "UILabel"; text = "Test"; ObjectID = "RWt-JH-f2r"; */
 "RWt-JH-f2r.text" = "Test";
 
 /* Class = "UILabel"; text = "ADRESSE"; ObjectID = "SBz-Qd-YOB"; */
-"SBz-Qd-YOB.text" = "ADRESS";
+"SBz-Qd-YOB.text" = "Anschrift";
 
 /* Class = "UITextField"; placeholder = "Prenom"; ObjectID = "T4V-SU-ZEd"; */
-"T4V-SU-ZEd.placeholder" = "First Name";
+"T4V-SU-ZEd.placeholder" = "Vorname";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "VbX-fr-9fY"; */
 "VbX-fr-9fY.text" = "Label";
 
 /* Class = "UILabel"; text = "COORDONÉES"; ObjectID = "W10-C4-N3a"; */
-"W10-C4-N3a.text" = "Contact details";
+"W10-C4-N3a.text" = "Kontaktdaten";
 
 /* Class = "UIButton"; accessibilityLabel = "Modifier"; ObjectID = "W28-Eu-RBR"; */
 "W28-Eu-RBR.accessibilityLabel" = "Modify";
@@ -158,28 +158,28 @@
 "W28-Eu-RBR.normalTitle" = "Modify";
 
 /* Class = "UITextField"; placeholder = "Téléphone"; ObjectID = "XgT-Hj-HM6"; */
-"XgT-Hj-HM6.placeholder" = "Phone number";
+"XgT-Hj-HM6.placeholder" = "Telefonnummer";
 
 /* Class = "UITableViewController"; title = "SELECTION CONTACTS"; ObjectID = "Y2R-dZ-M5c"; */
-"Y2R-dZ-M5c.title" = "CONTACTS SELECTION";
+"Y2R-dZ-M5c.title" = "Kontaks";
 
 /* Class = "UILabel"; text = "Oliwood"; ObjectID = "Y4f-XY-Oui"; */
 "Y4f-XY-Oui.text" = "Oliwood";
 
 /* Class = "UILabel"; text = "ENTREPRISE"; ObjectID = "YXt-h6-Mv9"; */
-"YXt-h6-Mv9.text" = "COMPANY";
+"YXt-h6-Mv9.text" = "Unternehmen";
 
 /* Class = "UILabel"; text = "A"; ObjectID = "aoH-LX-pBm"; */
 "aoH-LX-pBm.text" = "A";
 
 /* Class = "UILabel"; text = "TÉLÉPHONE"; ObjectID = "b3q-EJ-Cjg"; */
-"b3q-EJ-Cjg.text" = "Phone Number";
+"b3q-EJ-Cjg.text" = "Telefonnummer";
 
 /* Class = "UILabel"; text = "COORDONÉES"; ObjectID = "bfW-sX-VQt"; */
-"bfW-sX-VQt.text" = "Contact Details";
+"bfW-sX-VQt.text" = "Kontaktdaten";
 
 /* Class = "UITableViewController"; title = "GESTION CLIENTS"; ObjectID = "cKE-gy-41n"; */
-"cKE-gy-41n.title" = "CONTACTS";
+"cKE-gy-41n.title" = "KONTAKTS";
 
 /* Class = "UILabel"; text = "2015"; ObjectID = "cMP-id-FFG"; */
 "cMP-id-FFG.text" = "2015";
@@ -188,31 +188,31 @@
 "d0v-AH-UuP.text" = "Label";
 
 /* Class = "UILabel"; text = "CONTACT"; ObjectID = "d6O-RV-sjg"; */
-"d6O-RV-sjg.text" = "CONTACT";
+"d6O-RV-sjg.text" = "KONTAKT";
 
 /* Class = "UILabel"; text = "TÉLÉPHONE"; ObjectID = "dHM-Ov-RVn"; */
-"dHM-Ov-RVn.text" = "Phone Number";
+"dHM-Ov-RVn.text" = "Telefonnummer";
 
 /* Class = "UILabel"; text = "TÉLÉPHONE"; ObjectID = "emQ-AE-zKG"; */
-"emQ-AE-zKG.text" = "Phone Number";
+"emQ-AE-zKG.text" = "Telefonnummer";
 
 /* Class = "UILabel"; text = "PRENOM"; ObjectID = "fph-VA-BPp"; */
-"fph-VA-BPp.text" = "First Name";
+"fph-VA-BPp.text" = "Vorname";
 
 /* Class = "UILabel"; text = "VENDOR ACADEMY :"; ObjectID = "ftb-f8-q8D"; */
 "ftb-f8-q8D.text" = "VENDOR ACADEMY";
 
 /* Class = "UITextField"; placeholder = "Nom"; ObjectID = "gII-Um-MKm"; */
-"gII-Um-MKm.placeholder" = "NAME";
+"gII-Um-MKm.placeholder" = "Nachname";
 
 /* Class = "UILabel"; text = "FONCTION"; ObjectID = "gaQ-C6-uMW"; */
-"gaQ-C6-uMW.text" = "Job Title";
+"gaQ-C6-uMW.text" = "Funktion";
 
 /* Class = "UILabel"; text = "LUN"; ObjectID = "hcl-Dq-lFd"; */
 "hcl-Dq-lFd.text" = "MON";
 
 /* Class = "UILabel"; text = "ENTREPRISE"; ObjectID = "ikD-Fo-SzL"; */
-"ikD-Fo-SzL.text" = "COMPANY";
+"ikD-Fo-SzL.text" = "Unternehmen";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "jqL-2f-69F"; */
 "jqL-2f-69F.normalTitle" = "Button";
@@ -221,31 +221,31 @@
 "krJ-6M-NLW.title" = "Logout";
 
 /* Class = "UIButton"; normalTitle = "MODULES DE FORMATION"; ObjectID = "lSD-wd-fXK"; */
-"lSD-wd-fXK.normalTitle" = "Trainings set";
+"lSD-wd-fXK.normalTitle" = "Schulungs";
 
 /* Class = "UILabel"; text = "RESPONSABLE"; ObjectID = "msk-Xd-Nmd"; */
-"msk-Xd-Nmd.text" = "RESPONSABLE";
+"msk-Xd-Nmd.text" = "MANAGER";
 
 /* Class = "UIButton"; normalTitle = "GESTION DU PLANNING"; ObjectID = "nDZ-ZM-67E"; */
-"nDZ-ZM-67E.normalTitle" = "Planning Management";
+"nDZ-ZM-67E.normalTitle" = "Planungsmanagement";
 
 /* Class = "UILabel"; text = "FORMATION"; ObjectID = "oYQ-Pw-18F"; */
-"oYQ-Pw-18F.text" = "Training";
+"oYQ-Pw-18F.text" = "Schulung";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "pss-kZ-3ZY"; */
 "pss-kZ-3ZY.text" = "Label";
 
 /* Class = "UITextField"; placeholder = "Fonction"; ObjectID = "q3r-Lp-JGd"; */
-"q3r-Lp-JGd.placeholder" = "Job Title";
+"q3r-Lp-JGd.placeholder" = "Funktion";
 
 /* Class = "UILabel"; text = "PRENOM"; ObjectID = "qBS-ZU-cmX"; */
-"qBS-ZU-cmX.text" = "First Name";
+"qBS-ZU-cmX.text" = "Vorname";
 
 /* Class = "UILabel"; text = "TÉLÉPHONE"; ObjectID = "s4h-PV-zBH"; */
-"s4h-PV-zBH.text" = "Phone Number";
+"s4h-PV-zBH.text" = "Telefonnummer";
 
 /* Class = "UIViewController"; title = "DETAIL ENTREPRISE"; ObjectID = "s81-hS-73m"; */
-"s81-hS-73m.title" = "Company";
+"s81-hS-73m.title" = "Unternehmen";
 
 /* Class = "UILabel"; text = "DENIRO Jean-Michel"; ObjectID = "tfJ-JC-353"; */
 "tfJ-JC-353.text" = "DENIRO JM";
@@ -254,7 +254,7 @@
 "tyS-Yj-wHA.normalTitle" = "sign-in";
 
 /* Class = "UILabel"; text = "ADRESSE"; ObjectID = "u80-Hq-1G3"; */
-"u80-Hq-1G3.text" = "ADRESSE";
+"u80-Hq-1G3.text" = "Anschrift";
 
 /* Class = "UINavigationItem"; title = "LEASE DIAG"; ObjectID = "uSS-jv-f0N"; */
 "uSS-jv-f0N.title" = "Train'On";
@@ -263,22 +263,22 @@
 "ulG-Qu-DeE.normalTitle" = "Button";
 
 /* Class = "UIButton"; normalTitle = "GESTION CLIENTS"; ObjectID = "v5C-f5-5i7"; */
-"v5C-f5-5i7.normalTitle" = "Client Management";
+"v5C-f5-5i7.normalTitle" = "Kundenmanagement";
 
 /* Class = "UILabel"; text = "MOT DE PASSE"; ObjectID = "vXx-lb-9yf"; */
-"vXx-lb-9yf.text" = "Password";
+"vXx-lb-9yf.text" = "Passwort";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "wVS-dZ-f7X"; */
 "wVS-dZ-f7X.text" = "Label";
 
 /* Class = "UITableViewController"; title = "SELECTION MODULES"; ObjectID = "y7W-Kj-CZf"; */
-"y7W-Kj-CZf.title" = "TRAININGS SELECTION";
+"y7W-Kj-CZf.title" = "Schulungs";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "yEV-Fs-TUH"; */
 "yEV-Fs-TUH.text" = "Label";
 
 /* Class = "UILabel"; text = "ENTREPRISE"; ObjectID = "zCP-fg-gdh"; */
-"zCP-fg-gdh.text" = "COMPANY";
+"zCP-fg-gdh.text" = "Unternehmen";
 
 /* Class = "UILabel"; text = "Oliwood"; ObjectID = "zUO-kt-WFC"; */
 "zUO-kt-WFC.text" = "Oliwood";

@@ -32,9 +32,11 @@ class DetailEntrepriseViewController: UIViewController {
         do {
             let predicate = NSPredicate(format: "ent_id = %@", entID as NSNumber)
             fetchRequestEnt.predicate = predicate
+            //print(predicate)
             let fetchResults = try managedContextEnt.executeFetchRequest(fetchRequestEnt) as? [ENTREPRISE]
-            
+            //print(fetchResults)
             for entreprise in fetchResults! {
+                entrepriseLabel.text = entreprise.ent_nom
                 telephoneEntLabel.text = entreprise.ent_telephone
                 adresseEntLabel.text = entreprise.ent_adresse
             }
@@ -56,6 +58,10 @@ class DetailEntrepriseViewController: UIViewController {
                     prenomLabel.text = collaborateur.col_prenom
                     nomLabel.text = collaborateur.col_nom
                     emailLabel.text = collaborateur.col_mail
+                } else {
+                    prenomLabel.text = nil
+                    nomLabel.text = nil
+                    emailLabel.text = nil
                 }
             }
         } catch {

@@ -134,7 +134,7 @@ class SelectionModulesTableViewController: UITableViewController {
         if tmpModIdSelected.contains(Int(tabModules[indexPath.section][indexPath.row].mod_id!)){
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
-        
+        print(Int(tabModules[indexPath.section][indexPath.row].mod_id!))
         return cell
     }
     

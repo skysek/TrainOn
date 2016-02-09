@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import EventKit
 
 class AjoutSessionViewController: UIViewController {
 
@@ -19,6 +20,7 @@ class AjoutSessionViewController: UIViewController {
     @IBOutlet var heureFinPicker: UIDatePicker!
     
     @IBOutlet var btbChoixModules: UIButton!
+    
     
     //Variables hérités lors de changement d'écran
     var moduleID = NSNumber()
@@ -317,6 +319,11 @@ class AjoutSessionViewController: UIViewController {
         }
     }
     
+    
+    
+    
+    
+    
     override func viewWillAppear(animated: Bool) {
         var compteurContacts = 0
         var compteurModules = 0
@@ -376,7 +383,6 @@ class AjoutSessionViewController: UIViewController {
         return tabEntreprisesName[row]
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -384,6 +390,38 @@ class AjoutSessionViewController: UIViewController {
     
     @IBAction func ajoutContact(sender: AnyObject) {
         self.performSegueWithIdentifier("showSelectionContacts", sender: self)
+    }
+    
+    func createEvent(eventStore: EKEventStore, title: String, notes: String, startDate: NSDate, endDate: NSDate){
+        let event = EKEvent(eventStore: eventStore)
+        
+        event.title = title
+        event.notes = notes
+        event.startDate = startDate
+        event.endDate = endDate
+        event.calendar = eventStore.defaultCalendarForNewEvents
+        do{
+            try eventStore.saveEvent(event, span: .ThisEvent)
+        } catch{
+            print("Bad things happened")
+        }
+    }
+    
+    func combineDateWithTime(date: NSDate, time: NSDate) -> NSDate? {
+        let calendar = NSCalendar.currentCalendar()
+        
+        let dateComponents = calendar.components([.Year, .Month, .Day], fromDate: date)
+        let timeComponents = calendar.components([.Hour, .Minute, .Second], fromDate: time)
+        
+        let mergedComponments = NSDateComponents()
+        mergedComponments.year = dateComponents.year
+        mergedComponments.month = dateComponents.month
+        mergedComponments.day = dateComponents.day
+        mergedComponments.hour = timeComponents.hour
+        mergedComponments.minute = timeComponents.minute
+        mergedComponments.second = timeComponents.second
+        
+        return calendar.dateFromComponents(mergedComponments)
     }
     
     @IBAction func validerAjoutSession(sender: AnyObject) {
@@ -435,6 +473,7 @@ class AjoutSessionViewController: UIViewController {
         
         var session: SESSION
         var sesID = 0
+        
         if isCreation == 1 {
             //ID de la session
             sesID = countSes+1
@@ -549,7 +588,23 @@ class AjoutSessionViewController: UIViewController {
             print("Erreur lors de la récupération des données de la table TMPSESSIONCONTACT")
         }
         
- 
+        //Ajout event dans le calendrier
+        let eventStore = EKEventStore()
+        let title = "Formation BNP - \(pickerView(entreprisePicker, titleForRow: 0, forComponent: 0))"
+        let notes = pickerView(entreprisePicker, titleForRow: 0, forComponent: 0)
+        let startDate = combineDateWithTime(datePicker.date, time: heureDebPicker.date)
+        let endDate = combineDateWithTime(datePicker.date, time: heureFinPicker.date)
+        
+        if(EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized){
+            eventStore.requestAccessToEntityType(.Event, completion: { granted, error in
+                self.createEvent(eventStore, title: title, notes: notes, startDate: startDate!, endDate: endDate!)
+            })
+            //If we get permission
+            
+        } else{
+            //If we already have permission
+            createEvent(eventStore, title: title, notes: notes, startDate: startDate!, endDate: endDate!)
+        }
         
         //Table SESSION
         managedContextSes = appliDelegate.managedObjectContext
@@ -745,7 +800,7 @@ class AjoutSessionViewController: UIViewController {
                 request.HTTPMethod = "POST"
                 request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData
                 request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                
+                //print("ALX Log: \(JSONObjectSes)")
                 do {
                     request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(JSONObjectSes, options:  NSJSONWritingOptions(rawValue:0))
                 } catch {

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import EventKit
 
 class MainViewController: UIViewController {
     
@@ -249,8 +250,37 @@ class MainViewController: UIViewController {
         }
         
         super.viewDidLoad()
+        
+     /*   let eventStore = EKEventStore()
+        let startDate = NSDate()
+        let endDate = startDate.dateByAddingTimeInterval(60*60)
+        
+        if(EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized){
+            eventStore.requestAccessToEntityType(.Event, completion: { granted, error in
+                self.createEvent(eventStore, title: title!, startDate: startDate, endDate: endDate)
+            })
+            //If we get permission
+            
+        } else{
+            //If we already have permission
+            createEvent(eventStore, title: title!, startDate: startDate, endDate: endDate)
+        } */
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    /*func createEvent(eventStore: EKEventStore, title: String, startDate: NSDate, endDate: NSDate){
+        let event = EKEvent(eventStore: eventStore)
+        
+        event.title = title
+        event.startDate = startDate
+        event.endDate = endDate
+        event.calendar = eventStore.defaultCalendarForNewEvents
+        do{
+            try eventStore.saveEvent(event, span: .ThisEvent)
+        } catch{
+            print("Bad things happened")
+        }
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

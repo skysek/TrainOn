@@ -65,8 +65,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.loginTxtField.delegate = self
         self.passwordTxtField.delegate = self
         
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+        
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -76,16 +78,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func keyboardWillShow(sender: NSNotification) {
         if isKeyboardUp == false {
-            self.view.frame.origin.y -= 300
+            self.view.frame.origin.y -= 210
             isKeyboardUp = true
         }
     }
     func keyboardWillHide(sender: NSNotification) {
         if isKeyboardUp == true {
-            self.view.frame.origin.y += 300
+            self.view.frame.origin.y += 210
             isKeyboardUp = false
         }
     }
+    
+    
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)

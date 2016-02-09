@@ -221,7 +221,8 @@ class AjoutContactViewController: UIViewController, UITextFieldDelegate {
                     print("Erreur lors de la récupération des données de la table COLLABORATEUR")
                 }
 
-                
+                //let alert = UIAlertView(title: NSLocalizedString("Modification réussi", comment: "Titre message alerte"), message: NSLocalizedString("Le contact a bien été modifié.",comment: "Message Alerte"), delegate: nil, cancelButtonTitle: "OK")
+                //alert.show()
             }
             
             

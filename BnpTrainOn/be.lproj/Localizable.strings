@@ -2,32 +2,29 @@
    Titre message alerte */
 "Ajout réussi" = "Success";
 
-/* message alerte */
-"Attention !" = "Warning !";
-
-/* message alerte */
-"Il doit y avoir au moins un contact et un module sélectionnés." = "There should be at least one training and one contact.";
-
-/* message alerte */
-"Il doit y avoir au moins un module sélectionné." = "There should be at least one training.";
-
-/* message alerte */
-"Il doit y avoir au moins un contact sélectionné." = "There should be at least one contact.";
-
 /* mois calendrier */
 "Aout" = "August";
 
+/* message alerte */
+"Attention !" = "Warning !";
+
 /* mois calendrier */
 "Avril" = "April";
-
-/* accueil */
-"BIENVENUE" = "WELCOME";
 
 /* mois calendrier */
 "Décembre" = "December";
 
 /* mois calendrier */
 "Février" = "February";
+
+/* message alerte */
+"Il doit y avoir au moins un contact et un module sélectionnés." = "There should be at least one training and one contact.";
+
+/* message alerte */
+"Il doit y avoir au moins un contact sélectionné." = "There should be at least one contact.";
+
+/* message alerte */
+"Il doit y avoir au moins un module sélectionné." = "There should be at least one training.";
 
 /* mois calendrier */
 "Janvier" = "January";
@@ -42,16 +39,16 @@
 "L'entreprise a bien été ajouté." = "Information Saved";
 
 /* message alerte */
-"La session a bien été modifiée." = "The training session has been saved.";
+"La session a bien été ajoutée." = "Information Saved";
 
 /* message alerte */
-"La session a bien été ajoutée." = "The training session has been modified.";
-
-/* Message Alerte */
-"Le contact a bien été modifié." = "Information Saved";
+"La session a bien été modifiée." = "Information Saved";
 
 /* Message Alerte */
 "Le contact a bien été ajouté." = "Information Saved";
+
+/* Message Alerte */
+"Le contact a bien été modifié." = "Information Saved";
 
 /* mois calendrier */
 "Mai" = "May";
@@ -59,7 +56,8 @@
 /* mois calendrier */
 "Mars" = "March";
 
-/* message alerte */
+/* message alert
+   message alerte */
 "Modification réussie" = "Success";
 
 /* mois calendrier */

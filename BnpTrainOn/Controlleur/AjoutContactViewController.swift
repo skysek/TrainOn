@@ -20,6 +20,8 @@ class AjoutContactViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var fonctionTextField: UITextField!
     @IBOutlet var telephoneTextField: UITextField!
     @IBOutlet var pickerView: UIPickerView!
+    @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet var managerLbl: UILabel!
     
     var database = [NSManagedObject]()
     let appliDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -30,11 +32,16 @@ class AjoutContactViewController: UIViewController, UITextFieldDelegate {
     var isCreation = 1
     var colID = Int() // si modification
     
-    let checkbox1 = Checkbox(frame: CGRectMake(12, 527, 28, 20), title: "checkbox1", selected: false)
+    var checkbox1 = Checkbox(frame: CGRectMake(15, 0, 28, 20), title: "checkbox1", selected: false)
+    
+    
+    
 
     override func viewDidLoad() {
         self.navigationController!.navigationItem.backBarButtonItem?.title = "Back"
         
+        //La checkbox s'affiche en dessous du label Manager
+        checkbox1 = Checkbox(frame: CGRectMake(15, self.managerLbl.center.y + 20, 28, 20), title: "checkbox1", selected: false)
         self.view.addSubview(checkbox1)
         
         self.prenomTextField.delegate = self
@@ -127,6 +134,8 @@ class AjoutContactViewController: UIViewController, UITextFieldDelegate {
         
         super.viewDidLoad()
     }
+    
+    
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -221,8 +230,8 @@ class AjoutContactViewController: UIViewController, UITextFieldDelegate {
                     print("Erreur lors de la récupération des données de la table COLLABORATEUR")
                 }
 
-                //let alert = UIAlertView(title: NSLocalizedString("Modification réussi", comment: "Titre message alerte"), message: NSLocalizedString("Le contact a bien été modifié.",comment: "Message Alerte"), delegate: nil, cancelButtonTitle: "OK")
-                //alert.show()
+                let alert = UIAlertView(title: NSLocalizedString("Modification réussie", comment: "message alert"), message: NSLocalizedString("Le contact a bien été modifié.",comment: "Message Alerte"), delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
             }
             
             

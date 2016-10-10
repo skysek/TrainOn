@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import EventKit
 
-class AjoutSessionViewController: UIViewController {
+class AjoutSessionViewController: UIViewController, UINavigationControllerDelegate {
 
     @IBOutlet var formationLabel: UILabel!
     @IBOutlet var entreprisePicker: UIPickerView!
@@ -18,18 +18,27 @@ class AjoutSessionViewController: UIViewController {
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var heureDebPicker: UIDatePicker!
     @IBOutlet var heureFinPicker: UIDatePicker!
+    @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet var sessionRealisee: UIButton!
+
     
     @IBOutlet var btbChoixModules: UIButton!
     
+    @IBOutlet var btnEnregistrer: UIToolbar!
     
     //Variables hérités lors de changement d'écran
     var moduleID = NSNumber()
     var contactID = NSNumber()
     var sessionID = NSNumber()
+    var preID :  NSNumber = 0
+    var arrayPresences = [NSNumber]()
+    
     
     var tabEntreprises = [ENTREPRISE]()
     var tabEntreprisesName = [String]()
     var moduleEnCour = [MODULE]()
+    var tabColGeneral = [COLLABORATEUR]()
+    var tabSesCol = [Int]()
     
     var isCreation = 1
     var origine = "module" // ou "contact" ou "calendrier"
@@ -38,9 +47,12 @@ class AjoutSessionViewController: UIViewController {
     let appliDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         print("isCreation = " + String(isCreation))
+        
         prepareTableTmp()
+        
         if isCreation == 1 {
             //btbChoixModules.hidden = true
             
@@ -317,14 +329,31 @@ class AjoutSessionViewController: UIViewController {
                 print("Erreur lors de la récupération des données de la table MODULE")
             }
         }
+        
     }
     
-    
-    
-    
-    
-    
     override func viewWillAppear(animated: Bool) {
+        
+        
+        //Affichage du bouton "Session réalisée"
+        /*let dateFinSession = combineDateWithTime(datePicker.date, time: heureFinPicker.date)
+        let dateActuelle = NSDate()
+        print(" DATE FIN : \(dateFinSession) !!!")
+        print(" DATE ACTUELLE : \(dateActuelle) !!!")
+        let compareDate:NSComparisonResult = dateActuelle.compare(dateFinSession!)
+        print("COMPARE DATE : \(compareDate) !!!")
+        if isCreation == 1{
+            sessionRealisee.hidden = true;
+            sessionRealisee.enabled = false;
+        }
+        else if (compareDate == NSComparisonResult.OrderedDescending || compareDate == NSComparisonResult.OrderedSame){
+            sessionRealisee.hidden = false
+            sessionRealisee.enabled = true
+        } else {
+            sessionRealisee.hidden = true
+            sessionRealisee.enabled = false
+        }*/
+        
         var compteurContacts = 0
         var compteurModules = 0
         
@@ -334,9 +363,9 @@ class AjoutSessionViewController: UIViewController {
         
         do {
             let fetchedEntities = try managedContextTmpSesCon.executeFetchRequest(fetchRequestTmpSesCon) as! [TMPSESSIONCONTACT]
-            
-            for _ in fetchedEntities {
-                compteurContacts++
+            print("Table TMPSESSIONCONTACT : \(fetchedEntities)")
+            for a in fetchedEntities {
+                compteurContacts += 1
             }
             
             if compteurContacts > 1 {
@@ -344,6 +373,7 @@ class AjoutSessionViewController: UIViewController {
             } else {
                 contactSelecLabel.text = String(compteurContacts) + " " + NSLocalizedString("contact sélectionné" , comment: "pour afficher un nombre de selection")
             }
+            
         } catch {
             print("Erreur vérification dans la table temporaire de contact")
         }
@@ -356,20 +386,21 @@ class AjoutSessionViewController: UIViewController {
             let fetchedEntities = try managedContextTmpSesMod.executeFetchRequest(fetchRequestTmpSesMod) as! [TMPSESSIONMODULE]
             
             for _ in fetchedEntities {
-                compteurModules++
+                compteurModules += 1
             }
             
             if compteurModules > 1 {
                 formationLabel.text = String(compteurModules) +  " " + NSLocalizedString("modules sélectionnés" , comment: "pour afficher un nombre de selection")
             } else {
-                formationLabel.text = String(compteurModules) + NSLocalizedString("module sélectionné" , comment: "pour afficher un nombre de selection")
+                formationLabel.text = String(compteurModules) + " " + NSLocalizedString("module sélectionné" , comment: "pour afficher un nombre de selection")
             }
         } catch {
             print("Erreur vérification dans la table temporaire des modules")
         }
-
+        
+        
     }
-
+    
     //Permet de gérer le Picker contenant la liste des entreprises
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -386,6 +417,11 @@ class AjoutSessionViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+  
+    @IBAction func btnSessionRealisee(sender: AnyObject) {
+        self.performSegueWithIdentifier("showPresence", sender: sender)
     }
     
     @IBAction func ajoutContact(sender: AnyObject) {
@@ -429,18 +465,18 @@ class AjoutSessionViewController: UIViewController {
         //Table TMPSESSIONCONTACT
         let managedContextTmpSesCon = appliDelegate.managedObjectContext
         let fetchRequestTmpSesCon = NSFetchRequest(entityName: "TMPSESSIONCONTACT")
-        //let countTmpSesCon = managedContextTmpSesCon.countForFetchRequest(fetchRequestTmpSesCon, error: nil)
+        let countTmpSesCon = try! managedContextTmpSesCon.countForFetchRequest(fetchRequestTmpSesCon)
         
         //Table TMPSESSIONMODULE
         let managedContextTmpSesMod = appliDelegate.managedObjectContext
         let fetchRequestTmpSesMod = NSFetchRequest(entityName: "TMPSESSIONMODULE")
-        //let countTmpSesMod = managedContextTmpSesMod.countForFetchRequest(fetchRequestTmpSesMod, error: nil)
+        let countTmpSesMod = try! managedContextTmpSesMod.countForFetchRequest(fetchRequestTmpSesMod)
         
         //Liste des tables où les données de la session seront stockées
         //Table SESSION
         var managedContextSes = appliDelegate.managedObjectContext
         var fetchRequestSes = NSFetchRequest(entityName: "SESSION")
-        let countSes = managedContextSes.countForFetchRequest(fetchRequestSes, error: nil)
+        let countSes = try! managedContextSes.countForFetchRequest(fetchRequestSes)
         
         //Table SESSIONCOLLABORATEUR
         var managedContextSesCol = appliDelegate.managedObjectContext
@@ -473,6 +509,32 @@ class AjoutSessionViewController: UIViewController {
         
         var session: SESSION
         var sesID = 0
+        
+        
+        if countTmpSesCon == 0 && countTmpSesMod == 0{
+            let alert = UIAlertController(title: NSLocalizedString("Attention !" , comment: "message alerte"), message: NSLocalizedString("Il doit y avoir au moins un contact et un module sélectionnés." , comment: "message alerte"), preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default){
+                UIAlertAction in
+                //self.performSegueWithIdentifier("showPlanning", sender: self)
+                })
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        if countTmpSesMod == 0{
+            let alert = UIAlertController(title: NSLocalizedString("Attention !" , comment: "message alerte"), message: NSLocalizedString("Il doit y avoir au moins un module sélectionné." , comment: "message alerte"), preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default){
+                UIAlertAction in
+                //self.performSegueWithIdentifier("showPlanning", sender: self)
+                })
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        if countTmpSesCon == 0{
+            let alert = UIAlertController(title: NSLocalizedString("Attention !" , comment: "message alerte"), message: NSLocalizedString("Il doit y avoir au moins un contact sélectionné." , comment: "message alerte"), preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default){
+                UIAlertAction in
+                //self.performSegueWithIdentifier("showPlanning", sender: self)
+                })
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
         
         if isCreation == 1 {
             //ID de la session
@@ -554,7 +616,7 @@ class AjoutSessionViewController: UIViewController {
             print("Erreur lors de la récupération des données de la table TMPSESSIONMODULE")
         }
         
-
+        var i = 0
         
         //Enregistrement dans la table session/contact
         do {
@@ -570,19 +632,27 @@ class AjoutSessionViewController: UIViewController {
             try managedContextSesCol.save()
             
             // insertion des nouveaux
-            let fetchResults = try managedContextTmpSesCon.executeFetchRequest(fetchRequestTmpSesCon) as? [TMPSESSIONCONTACT]
-            
+            var fetchResults = try managedContextTmpSesCon.executeFetchRequest(fetchRequestTmpSesCon) as? [TMPSESSIONCONTACT]
+            fetchResults = fetchResults!.sort({ $0.col_id!.compare($1.col_id!) == .OrderedAscending })
             for tmpsessioncontact in fetchResults! {
                 let entityDescriptionSesCol = NSEntityDescription.entityForName("SESSIONCOLLABORATEUR", inManagedObjectContext: managedContextSesCol)
                 let sessioncollaborateur = SESSIONCOLLABORATEUR(entity: entityDescriptionSesCol!, insertIntoManagedObjectContext: managedContextSesCol)
                 
-                sessioncollaborateur.ses_id = sesID
-                sessioncollaborateur.col_id = tmpsessioncontact.col_id
+                sessioncollaborateur.setValue(tmpsessioncontact.col_id, forKey: "col_id")
+                sessioncollaborateur.setValue(sesID, forKey: "ses_id")
+                
+                if i < arrayPresences.count{
+                    sessioncollaborateur.setValue(arrayPresences[i], forKey: "pre_id")
+                    i += 1
+                }
+                
+                print("session collaborateur : \(sessioncollaborateur)")
                 do {
                     try managedContextSesCol.save()
                 } catch {
                     print("Impossible de sauvegarder l'ajout dans la table SESSIONCOLLABORATEUR")
                 }
+                
             }
         } catch {
             print("Erreur lors de la récupération des données de la table TMPSESSIONCONTACT")
@@ -605,6 +675,7 @@ class AjoutSessionViewController: UIViewController {
             //If we already have permission
             createEvent(eventStore, title: title, notes: notes, startDate: startDate!, endDate: endDate!)
         }
+        
         
         //Table SESSION
         managedContextSes = appliDelegate.managedObjectContext
@@ -734,7 +805,7 @@ class AjoutSessionViewController: UIViewController {
                                 
                                 //Enregistrement du collaborateur dans le JSON
                                 JSONObjectCol["id"] = collaborateur.col_id
-                                JSONObjectCol["name"] = collaborateur.col_nom
+                                JSONObjectCol["name"] = collaborateur.col_nom! + " " + collaborateur.col_prenom!
                                 JSONObjectCol["email"] = collaborateur.col_mail
                                 
                                 jsonTestCol.append(JSONObjectCol)
@@ -751,6 +822,14 @@ class AjoutSessionViewController: UIViewController {
                 
                 fetchRequestCol = NSFetchRequest(entityName: "COLLABORATEUR")
                 do {
+                    /*if numEntreprise == 0{
+                        let alert = UIAlertController(title: NSLocalizedString("Enregistrement échoué", comment: "message alert"), message: NSLocalizedString("Veuillez sélectionner au moins un contact.", comment: "message alerte"), preferredStyle: .Alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .Default){
+                            UIAlertAction in
+                            
+                            })
+                        self.presentViewController(alert, animated: true, completion: nil)
+                    }*/
                     let predicate = NSPredicate(format: "ent_id = %@", numEntreprise)
                     fetchRequestCol.predicate = predicate
                     let fetchResults = try managedContextCol.executeFetchRequest(fetchRequestCol) as? [COLLABORATEUR]
@@ -758,7 +837,7 @@ class AjoutSessionViewController: UIViewController {
                     for col in fetchResults! {
                         if col.col_est_responsable == 1 {
                             JSONObjectColResp["id"] = col.col_id
-                            JSONObjectColResp["name"] = col.col_nom
+                            JSONObjectColResp["name"] = col.col_nom! + " " + col.col_prenom!
                             JSONObjectColResp["email"] = col.col_mail
                             
                             jsonTestColResp.append(JSONObjectColResp)
@@ -794,7 +873,8 @@ class AjoutSessionViewController: UIViewController {
             //Si le JSON a envoyé est conforme, on lance la requête post avec ce dernier
             if NSJSONSerialization.isValidJSONObject(JSONObjectSes) {
                 let request: NSMutableURLRequest = NSMutableURLRequest()
-                let url = "http://pp2.cetelem.gr.sam.cx/DiagVendor/session/eyJsb2dpbiIgOiAiVGhpZXJyeS5FeW1hcmQiICwgICJwYXNzIiA6ICIifQ==/donnee"
+                //let url = "http://pp2.cetelem.gr.sam.cx/DiagVendor/session/eyJsb2dpbiIgOiAiVGhpZXJyeS5FeW1hcmQiICwgICJwYXNzIiA6ICIifQ==/donnee"
+                let url = "http://pp.bnp.gr.sam.cx/DiagVendor/session/eyJsb2dpbiIgOiAiTW9oc3NpbmUiICwgICJwYXNzIiA6ICIifQ==/donnee"
                 
                 request.URL = NSURL(string: url)
                 request.HTTPMethod = "POST"
@@ -825,13 +905,21 @@ class AjoutSessionViewController: UIViewController {
             isCreation = 0 // on passe (ou reste) en modification
             sessionID = sesID
             
-            let alert = UIAlertView(title: NSLocalizedString("Ajout réussi" , comment: "message alerte"), message: "La session a bien été ajoutée.", delegate: nil, cancelButtonTitle: "OK")
-            
-            alert.show()
+            let alert = UIAlertController(title: NSLocalizedString("Ajout réussi" , comment: "message alerte"), message: NSLocalizedString("La session a bien été ajoutée." , comment: "message alerte"), preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default){
+                UIAlertAction in
+                //self.performSegueWithIdentifier("showPlanning", sender: self)
+                })
+            self.presentViewController(alert, animated: true, completion: nil)
         } else {
-            let alert = UIAlertView(title: NSLocalizedString("Modification réussie" , comment: "message alerte"), message: NSLocalizedString("La session a bien été modifiée." , comment: "message alerte"), delegate: nil, cancelButtonTitle: "OK")
-            alert.show()
+            let alert = UIAlertController(title: NSLocalizedString("Modification réussie" , comment: "message alerte"), message: NSLocalizedString("La session a bien été modifiée." , comment: "message alerte"), preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default){
+                UIAlertAction in
+                //self.performSegueWithIdentifier("showPlanning", sender: self)
+                })
+            self.presentViewController(alert, animated: true, completion: nil)
         }
+        
         
         
         /*do {
@@ -853,9 +941,18 @@ class AjoutSessionViewController: UIViewController {
             
             let selectionContactsTableViewController = segue.destinationViewController as! SelectionContactsTableViewController
             selectionContactsTableViewController.entID = tabEntreprises[entreprisePicker.selectedRowInComponent(0)].ent_id as! Int
+            selectionContactsTableViewController.sesID = sessionID
+        }
+        else if segue.identifier == "showPresence" {
+            
+            let selectionPresencesTableViewController = segue.destinationViewController as! PresenceContactsTableViewController
+            selectionPresencesTableViewController.entID = tabEntreprises[entreprisePicker.selectedRowInComponent(0)].ent_id as! Int
+            selectionPresencesTableViewController.tabColGeneral = tabColGeneral
+            
+            selectionPresencesTableViewController.sesID = sessionID
         }
     }
-    
+
     func prepareTableTmp() {
         /*
         //Table TMPSESSIONCONTACT

@@ -1,4 +1,12 @@
 //
+//  PresenceContactsTableViewController.swift
+//  BnpTrainOn
+//
+//  Created by Resulis MAC 1 on 27/05/2016.
+//  Copyright © 2016 Resulis MAC 1. All rights reserved.
+//
+
+//
 //  SelectionContactsTableViewController.swift
 //  webAppliBNP
 //
@@ -9,30 +17,34 @@
 import UIKit
 import CoreData
 
-class SelectionContactsTableViewController: UITableViewController, UINavigationControllerDelegate {
-
+class PresenceContactsTableViewController: UITableViewController, UINavigationControllerDelegate {
+    
     var database = [NSManagedObject]()
     let appliDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     var entID = Int()
+    var sesID = NSNumber()
+    var colID = NSNumber()
+    var preID = NSNumber()
+    var arrayPresences = [NSNumber]()
+    
     var tabCol = [COLLABORATEUR]()
-    var sortedtabCol = [COLLABORATEUR]()
-    var tabColGeneral = [COLLABORATEUR]()
-    var sortedtabColGeneral = [COLLABORATEUR]()
     var tabEnt = [ENTREPRISE]()
     var tabCheckBox = [Checkbox]()
     
-    var colID = Int()
-    var sesID = NSNumber()
+    var tabColGeneral = [COLLABORATEUR]()
     
-    var presences = [SESSIONCOLLABORATEUR]()
+    var tabSesCol = [SESSIONCOLLABORATEUR]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationController?.delegate = self
         
         tabCheckBox.removeAll()
+        arrayPresences.removeAll()
+        tabSesCol.removeAll()
         
         //Table COLLABORATEUR
         let managedContextCol = appliDelegate.managedObjectContext
@@ -46,12 +58,8 @@ class SelectionContactsTableViewController: UITableViewController, UINavigationC
             fetchRequestCol.sortDescriptors = sortDescriptors
             let fetchResults = try managedContextCol.executeFetchRequest(fetchRequestCol) as? [COLLABORATEUR]
             
-            tabCol.removeAll()
             
-            for collaborateur in fetchResults! {
-                tabCol.append(collaborateur)
-            }
-            sortedtabCol = tabCol.sort({ $0.col_id!.compare($1.col_id!) == .OrderedAscending })
+            
         } catch {
             print("Erreur lors de la récupération des données de la table COLLABORATEUR")
         }
@@ -61,20 +69,22 @@ class SelectionContactsTableViewController: UITableViewController, UINavigationC
         let fetchRequestSesCol = NSFetchRequest(entityName: "SESSIONCOLLABORATEUR")
         
         do {
-            let predicate = NSPredicate(format: "col_id = %@", colID as NSNumber)
+            let predicate = NSPredicate(format: "ses_id = %@", sesID as NSNumber)
             fetchRequestSesCol.predicate = predicate
-            let sortDescriptor = NSSortDescriptor(key: "pre_id", ascending: true)
+            let sortDescriptor = NSSortDescriptor(key: "col_id", ascending: true)
             let sortDescriptors = [sortDescriptor]
             fetchRequestSesCol.sortDescriptors = sortDescriptors
             let fetchResults = try managedContextSesCol.executeFetchRequest(fetchRequestSesCol) as? [SESSIONCOLLABORATEUR]
             
-            presences.removeAll()
-            
-            for sessioncollaborateur in fetchResults! {
-                presences.append(sessioncollaborateur)
+            for sescol in fetchResults!{
+                if (sescol.prog_id == 1){
+                    tabSesCol.append(sescol)
+                    print("sescol : \(sescol)")
+                }
             }
+            
         } catch {
-            print("Erreur lors de la récupération des données de la table SESSIONCOLLABORATEUR")
+            print("Erreur lors de la récupération des données de la table COLLABORATEUR")
         }
         
         //Table ENTREPRISE
@@ -94,55 +104,62 @@ class SelectionContactsTableViewController: UITableViewController, UINavigationC
         } catch {
             print("Erreur lors de la récupération des données de la table COLLABORATEUR")
         }
-    }
-
-    
-    @IBAction func back(sender: AnyObject) {
-        self.performSegueWithIdentifier("back", sender: sender)
+        
+        print("PROGRAMMÉS : \(tabSesCol)")
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Sélection des contacts"
+        return "Liste de présences"
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return sortedtabCol.count
+        return tabColGeneral.count
     }
-
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cellContact", forIndexPath: indexPath) as! CellSelectionContactTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cellContact", forIndexPath: indexPath) as! CellPresenceContactTableViewCell
         let checkbox1 = Checkbox(frame: CGRectMake(0, 13, 28, 20), title: "checkbox1", selected: false)
 
-        checkbox1.tag = sortedtabCol[indexPath.row].col_id as! Int
         
-        cell.contactNameLabel.text = sortedtabCol[indexPath.row].col_nom! +  " " + sortedtabCol[indexPath.row].col_prenom!
+        checkbox1.tag = tabColGeneral[indexPath.row].col_id as! Int
+        
+        cell.contactNameLabel.text = tabColGeneral[indexPath.row].col_nom! +  " " + tabColGeneral[indexPath.row].col_prenom!
         cell.entrepriseNameLabel.text = tabEnt[0].ent_nom
-        cell.idCollaborateur = sortedtabCol[indexPath.row].col_id!
-        cell.idSession = sesID
+        cell.idCollaborateur = tabColGeneral[indexPath.row].col_id!
+        
         cell.checkbox = checkbox1
+        cell.idSession = sesID
         cell.changeTarget()
         cell.changeStateCheckbox()
         
-        if (checkbox1.selected == true){
-            tabColGeneral.append(sortedtabCol[indexPath.row])
+        if cell.checkbox.selected{
+            
+            preID = 1
+            
+        }else{
+            
+            preID = 0
         }
-        sortedtabColGeneral = tabColGeneral.sort({ $0.col_id!.compare($1.col_id!) == .OrderedAscending })
-        print("PRESENCE : \(sortedtabColGeneral)")
+        arrayPresences.append(preID)
+        
+        print("sesID : \(sesID)")
+        print("preID : \(preID)")
+        print("Les présents : \(arrayPresences)")
         cell.addSubview(checkbox1)
         
         return cell
@@ -153,75 +170,75 @@ class SelectionContactsTableViewController: UITableViewController, UINavigationC
     }
     
     override func viewWillDisappear(animated: Bool) {
-        //Table TMPSESSIONCONTACT
+        
+        //Table SESSIONCOLLABORATEUR
         let managedContextTmpSesCon = appliDelegate.managedObjectContext
-        let fetchRequestTmpSesCon = NSFetchRequest(entityName: "TMPSESSIONCONTACT")
+        let fetchRequestSesCon = NSFetchRequest(entityName: "SESSIONCOLLABORATEUR")
         
         do {
-            let fetchResults = try managedContextTmpSesCon.executeFetchRequest(fetchRequestTmpSesCon) as? [TMPSESSIONCONTACT]
+            let fetchResults = try managedContextTmpSesCon.executeFetchRequest(fetchRequestSesCon) as? [SESSIONCOLLABORATEUR]
             
-            for tmpsessioncontact in fetchResults! {
-                //print(tmpsessioncontact.col_id)
+            for sessioncontact in fetchResults! {
+                print("\(sessioncontact.col_id) : \(sessioncontact.pre_id)")
             }
         } catch {
-            print("Erreur lors de la récupération des données de la table COLLABORATEUR")
+            print("Erreur lors de la récupération des données de la table SESSIONCOLLABORATEUR")
         }
-        
     }
     
+   
     
-
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
+     // Override to support conditional editing of the table view.
+     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
     /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
+     // Override to support editing the table view.
+     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+     if editingStyle == .Delete {
+     // Delete the row from the data source
+     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+     } else if editingStyle == .Insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+     
+     }
+     */
+    
     /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+     // Override to support conditional rearranging of the table view.
+     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        }
+        
+    }
     
     func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
         if let controller = viewController as? AjoutSessionViewController {
-            controller.tabColGeneral = sortedtabColGeneral    // Here you pass the data back to your original view controller
+            
+            controller.arrayPresences = arrayPresences   // Here you pass the data back to your original view controller
         }
     }
-            
-    }
+   
     
-
+}
 

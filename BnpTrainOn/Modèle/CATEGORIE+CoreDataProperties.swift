@@ -16,5 +16,6 @@ extension CATEGORIE {
 
     @NSManaged var cat_id: NSNumber?
     @NSManaged var cat_nom: String?
-
+    @NSManaged var cat_order: NSNumber?
+    
 }

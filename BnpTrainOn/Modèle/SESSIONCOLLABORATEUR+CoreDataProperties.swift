@@ -16,5 +16,7 @@ extension SESSIONCOLLABORATEUR {
 
     @NSManaged var col_id: NSNumber?
     @NSManaged var ses_id: NSNumber?
+    @NSManaged var prog_id:NSNumber?
+    @NSManaged var pre_id: NSNumber?
 
 }

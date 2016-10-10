@@ -65,6 +65,8 @@ class ListeContactViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.navigationItem.title = NSLocalizedString("Clients", comment: "clients")
+        
         //Table ENTREPRISE
         let managedContextEnt = appliDelegate.managedObjectContext
         let fetchRequestEnt = NSFetchRequest(entityName: "ENTREPRISE")
@@ -131,9 +133,12 @@ class ListeContactViewController: UITableViewController {
 
         cell.contactName.text = tabCollaborateur[indexPath.row].col_nom
         cell.button.tag = tabCollaborateur[indexPath.row].col_id as! Int
-        cell.button.addTarget(self, action: "clickButtonDetail:", forControlEvents: .TouchUpInside)
+        cell.button.addTarget(self, action: #selector(ListeContactViewController.clickButtonDetail(_:)), forControlEvents: .TouchUpInside)
         
-        for var i=0; i<tabEntreprise.count; i++ {
+        cell.button2.tag = tabCollaborateur[indexPath.row].col_id as! Int
+        cell.button2.addTarget(self, action: #selector(ListeContactViewController.clickButtonDetail(_:)), forControlEvents: .TouchUpInside)
+        
+        for i in 0 ..< tabEntreprise.count {
             if tabEntreprise[i].ent_id == tabCollaborateur[indexPath.row].ent_id {
                 
                 cell.entrepriseName.text = tabEntreprise[i].ent_nom

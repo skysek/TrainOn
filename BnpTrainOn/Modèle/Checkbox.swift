@@ -22,7 +22,7 @@ class Checkbox : UIButton {
         self.applyStyle();
         
         self.setTitle(title, forState: UIControlState.Normal);
-        self.addTarget(self, action: "onTouchUpInside:", forControlEvents: UIControlEvents.TouchUpInside);
+        self.addTarget(self, action: #selector(Checkbox.onTouchUpInside(_:)), forControlEvents: UIControlEvents.TouchUpInside);
     }
     
     func adjustEdgeInsets() {

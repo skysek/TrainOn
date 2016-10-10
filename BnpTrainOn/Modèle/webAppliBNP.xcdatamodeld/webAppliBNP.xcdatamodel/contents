@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F1021" minimumToolsVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15E65" minimumToolsVersion="Automatic">
     <entity name="CATEGORIE" representedClassName=".CATEGORIE" syncable="YES">
         <attribute name="cat_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="cat_nom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cat_order" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="COLLABORATEUR" representedClassName=".COLLABORATEUR" syncable="YES">
         <attribute name="col_est_responsable" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -41,6 +42,8 @@
     </entity>
     <entity name="SESSIONCOLLABORATEUR" representedClassName=".SESSIONCOLLABORATEUR" syncable="YES">
         <attribute name="col_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="pre_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="prog_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="ses_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="SESSIONMODULE" representedClassName=".SESSIONMODULE" syncable="YES">
@@ -63,18 +66,18 @@
         <attribute name="mod_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CATEGORIE" positionX="0" positionY="99" width="128" height="75"/>
-        <element name="COLLABORATEUR" positionX="-54" positionY="45" width="128" height="165"/>
-        <element name="ENTREPRISE" positionX="-63" positionY="9" width="128" height="105"/>
-        <element name="LOGIN" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="MODULE" positionX="-18" positionY="90" width="128" height="105"/>
-        <element name="SESSION" positionX="18" positionY="108" width="128" height="135"/>
-        <element name="SESSIONCOLLABORATEUR" positionX="-9" positionY="108" width="128" height="75"/>
-        <element name="SESSIONMODULE" positionX="-18" positionY="99" width="128" height="75"/>
-        <element name="TMPSESSION" positionX="0" positionY="108" width="128" height="60"/>
-        <element name="TMPSESSIONCONTACT" positionX="-9" positionY="99" width="128" height="60"/>
-        <element name="TMPSESSIONMODULE" positionX="-18" positionY="90" width="128" height="60"/>
-        <element name="TMPMOISENCOUR" positionX="-18" positionY="90" width="128" height="60"/>
-        <element name="TMPANNEENCOUR" positionX="-9" positionY="99" width="128" height="60"/>
+        <element name="CATEGORIE" positionX="61" positionY="126" width="128" height="90"/>
+        <element name="COLLABORATEUR" positionX="61" positionY="-216" width="128" height="165"/>
+        <element name="ENTREPRISE" positionX="-135" positionY="-216" width="128" height="105"/>
+        <element name="LOGIN" positionX="-297" positionY="-216" width="128" height="90"/>
+        <element name="MODULE" positionX="-468" positionY="-9" width="128" height="105"/>
+        <element name="SESSION" positionX="61" positionY="-36" width="128" height="135"/>
+        <element name="SESSIONCOLLABORATEUR" positionX="-135" positionY="-45" width="128" height="103"/>
+        <element name="SESSIONMODULE" positionX="-297" positionY="-48" width="128" height="75"/>
+        <element name="TMPANNEENCOUR" positionX="63" positionY="252" width="128" height="60"/>
+        <element name="TMPMOISENCOUR" positionX="-135" positionY="252" width="128" height="60"/>
+        <element name="TMPSESSION" positionX="-299" positionY="252" width="128" height="60"/>
+        <element name="TMPSESSIONCONTACT" positionX="-135" positionY="99" width="128" height="60"/>
+        <element name="TMPSESSIONMODULE" positionX="-297" positionY="99" width="128" height="60"/>
     </elements>
 </model>

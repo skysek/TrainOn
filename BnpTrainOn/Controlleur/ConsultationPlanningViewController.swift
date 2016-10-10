@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ConsultationPlanningViewController: UIViewController {
+class ConsultationPlanningViewController: UIViewController, UIScrollViewDelegate {
     
     //1ère ligne calendrier
     @IBOutlet var CollectionButton1: [UIButton]!
@@ -33,6 +33,8 @@ class ConsultationPlanningViewController: UIViewController {
     @IBOutlet var viewInScrollView: UIView!
     @IBOutlet var moisLabel: UILabel!
     @IBOutlet var anneeLabel: UILabel!
+    @IBOutlet var planningScrollView: UIScrollView!
+    @IBOutlet var globalScrollView: UIScrollView!
     
     var sesID = NSNumber()
     var jourEncour = 1
@@ -59,6 +61,10 @@ class ConsultationPlanningViewController: UIViewController {
         var managedContextTmpAnnee = appliDelegate.managedObjectContext
         var fetchRequestTmpAnnee = NSFetchRequest(entityName: "TMPANNEENCOUR")
         
+        self.globalScrollView.delegate = self
+        self.globalScrollView.frame = self.view.frame
+        
+        //self.planningScrollView.contentSize = CGSizeMake(383,0)
         //let psc = self.appliDelegate.persistentStoreCoordinator
         
         let deleteRequestTmpMois = NSBatchDeleteRequest(fetchRequest: fetchRequestTmpMois)
@@ -163,11 +169,11 @@ class ConsultationPlanningViewController: UIViewController {
         
         
         if componentsTest.weekday <= 6 && componentsTest.weekday != 1 {
-            for var i=0; i<CollectionButton6.count; i++ {
+            for i in 0 ..< CollectionButton6.count {
                 CollectionButton6[i].hidden = true
             }
         } else {
-            for var i=0; i<CollectionButton6.count; i++ {
+            for i in 0 ..< CollectionButton6.count {
                 CollectionButton6[i].hidden = false
             }
         }
@@ -175,43 +181,43 @@ class ConsultationPlanningViewController: UIViewController {
         switch componentsTest.weekday {
         //Jour de départ : Dimanche
         case 1:
-            for var i=0; i<CollectionButton1.count-1; i++ {
+            for i in 0 ..< CollectionButton1.count-1 {
                 CollectionButton1[i].hidden = true
             }
             
-            for var i=6;i<CollectionButton1.count;i++ {
-                compteurDeJours++
+            for i in 6 ..< CollectionButton1.count {
+                compteurDeJours += 1
                 CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton1[i])
             }
             
-            for var i=0;i<CollectionButton2.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton2.count {
+                compteurDeJours += 1
                 CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton2[i])
             }
             
-            for var i=0;i<CollectionButton3.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton3.count {
+                compteurDeJours += 1
                 CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton3[i])
             }
             
-            for var i=0;i<CollectionButton4.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton4.count {
+                compteurDeJours += 1
                 CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton4[i])
             }
             
-            for var i=0;i<CollectionButton5.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton5.count {
+                compteurDeJours += 1
                 CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton5[i])
             }
             
-            for var i=0;i<CollectionButton6.count;i++ {
+            for i in 0 ..< CollectionButton6.count {
                 if compteurDeJours < nbDay {
-                    compteurDeJours++
+                    compteurDeJours += 1
                     CollectionButton6[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                     CollectionButtonMois.append(CollectionButton6[i])
                 } else {
@@ -220,33 +226,33 @@ class ConsultationPlanningViewController: UIViewController {
             }
         //Jour de départ : Lundi
         case 2:
-            for var i=0;i<CollectionButton1.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton1.count {
+                compteurDeJours += 1
                 CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton1[i])
             }
             
-            for var i=0;i<CollectionButton2.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton2.count {
+                compteurDeJours += 1
                 CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton2[i])
             }
             
-            for var i=0;i<CollectionButton3.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton3.count {
+                compteurDeJours += 1
                 CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton3[i])
             }
             
-            for var i=0;i<CollectionButton4.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton4.count {
+                compteurDeJours += 1
                 CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton4[i])
             }
             
-            for var i=0;i<CollectionButton5.count;i++ {
+            for i in 0 ..< CollectionButton5.count {
                 if compteurDeJours < nbDay {
-                    compteurDeJours++
+                    compteurDeJours += 1
                     CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                     CollectionButtonMois.append(CollectionButton5[i])
                 } else {
@@ -257,33 +263,33 @@ class ConsultationPlanningViewController: UIViewController {
         case 3:
             CollectionButton1[0].hidden = true
             
-            for var i=1;i<CollectionButton1.count;i++ {
-                compteurDeJours++
+            for i in 1 ..< CollectionButton1.count {
+                compteurDeJours += 1
                 CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton1[i])
             }
             
-            for var i=0;i<CollectionButton2.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton2.count {
+                compteurDeJours += 1
                 CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton2[i])
             }
             
-            for var i=0;i<CollectionButton3.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton3.count {
+                compteurDeJours += 1
                 CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton3[i])
             }
             
-            for var i=0;i<CollectionButton4.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton4.count {
+                compteurDeJours += 1
                 CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton4[i])
             }
             
-            for var i=0;i<CollectionButton5.count;i++ {
+            for i in 0 ..< CollectionButton5.count {
                 if compteurDeJours < nbDay {
-                    compteurDeJours++
+                    compteurDeJours += 1
                     CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                     CollectionButtonMois.append(CollectionButton5[i])
                 } else {
@@ -292,37 +298,37 @@ class ConsultationPlanningViewController: UIViewController {
             }
         //Jour de départ : Mercredi
         case 4:
-            for var i=0; i<CollectionButton1.count-5; i++ {
+            for i in 0 ..< CollectionButton1.count-5 {
                 CollectionButton1[i].hidden = true
             }
             
-            for var i=2;i<CollectionButton1.count;i++ {
-                compteurDeJours++
+            for i in 2 ..< CollectionButton1.count {
+                compteurDeJours += 1
                 CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton1[i])
             }
             
-            for var i=0;i<CollectionButton2.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton2.count {
+                compteurDeJours += 1
                 CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton2[i])
             }
             
-            for var i=0;i<CollectionButton3.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton3.count {
+                compteurDeJours += 1
                 CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton3[i])
             }
             
-            for var i=0;i<CollectionButton4.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton4.count {
+                compteurDeJours += 1
                 CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton4[i])
             }
             
-            for var i=0;i<CollectionButton5.count;i++ {
+            for i in 0 ..< CollectionButton5.count {
                 if compteurDeJours < nbDay {
-                    compteurDeJours++
+                    compteurDeJours += 1
                     CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                     CollectionButtonMois.append(CollectionButton5[i])
                 } else {
@@ -331,37 +337,37 @@ class ConsultationPlanningViewController: UIViewController {
             }
         //Jour de départ : Jeudi
         case 5:
-            for var i=0; i<CollectionButton1.count-4; i++ {
+            for i in 0 ..< CollectionButton1.count-4 {
                 CollectionButton1[i].hidden = true
             }
             
-            for var i=3;i<CollectionButton1.count;i++ {
-                compteurDeJours++
+            for i in 3 ..< CollectionButton1.count {
+                compteurDeJours += 1
                 CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton1[i])
             }
             
-            for var i=0;i<CollectionButton2.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton2.count {
+                compteurDeJours += 1
                 CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton2[i])
             }
             
-            for var i=0;i<CollectionButton3.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton3.count {
+                compteurDeJours += 1
                 CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton3[i])
             }
             
-            for var i=0;i<CollectionButton4.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton4.count {
+                compteurDeJours += 1
                 CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton4[i])
             }
             
-            for var i=0;i<CollectionButton5.count;i++ {
+            for i in 0 ..< CollectionButton5.count {
                 if compteurDeJours < nbDay {
-                    compteurDeJours++
+                    compteurDeJours += 1
                     CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                     CollectionButtonMois.append(CollectionButton5[i])
                 } else {
@@ -370,37 +376,37 @@ class ConsultationPlanningViewController: UIViewController {
             }
         //Jour de départ : Vendredi
         case 6:
-            for var i=0; i<CollectionButton1.count-3; i++ {
+            for i in 0 ..< CollectionButton1.count-3 {
                 CollectionButton1[i].hidden = true
             }
             
-            for var i=4;i<CollectionButton1.count;i++ {
-                compteurDeJours++
+            for i in 4 ..< CollectionButton1.count {
+                compteurDeJours += 1
                 CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton1[i])
             }
             
-            for var i=0;i<CollectionButton2.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton2.count {
+                compteurDeJours += 1
                 CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton2[i])
             }
             
-            for var i=0;i<CollectionButton3.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton3.count {
+                compteurDeJours += 1
                 CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton3[i])
             }
             
-            for var i=0;i<CollectionButton4.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton4.count {
+                compteurDeJours += 1
                 CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton4[i])
             }
             
-            for var i=0;i<CollectionButton5.count;i++ {
+            for i in 0 ..< CollectionButton5.count {
                 if compteurDeJours < nbDay {
-                    compteurDeJours++
+                    compteurDeJours += 1
                     CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                     CollectionButtonMois.append(CollectionButton5[i])
                 } else {
@@ -410,43 +416,43 @@ class ConsultationPlanningViewController: UIViewController {
             
         //Jour de départ : Samedi
         case 7:
-            for var i=0; i<CollectionButton1.count-2; i++ {
+            for i in 0 ..< CollectionButton1.count-2 {
                 CollectionButton1[i].hidden = true
             }
             
-            for var i=5;i<CollectionButton1.count;i++ {
-                compteurDeJours++
+            for i in 5 ..< CollectionButton1.count {
+                compteurDeJours += 1
                 CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton1[i])
             }
             
-            for var i=0;i<CollectionButton2.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton2.count {
+                compteurDeJours += 1
                 CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton2[i])
             }
             
-            for var i=0;i<CollectionButton3.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton3.count {
+                compteurDeJours += 1
                 CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton3[i])
             }
             
-            for var i=0;i<CollectionButton4.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton4.count {
+                compteurDeJours += 1
                 CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton4[i])
             }
             
-            for var i=0;i<CollectionButton5.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton5.count {
+                compteurDeJours += 1
                 CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton5[i])
             }
             
-            for var i=0;i<CollectionButton6.count;i++ {
+            for i in 0 ..< CollectionButton6.count {
                 if compteurDeJours < nbDay {
-                    compteurDeJours++
+                    compteurDeJours += 1
                     CollectionButton6[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                     CollectionButtonMois.append(CollectionButton6[i])
                 } else {
@@ -457,15 +463,18 @@ class ConsultationPlanningViewController: UIViewController {
             print("Défaut")
         }
         
-        for var i=0;i<CollectionButtonMois.count; i++ {
+        for i in 0 ..< CollectionButtonMois.count {
             CollectionButtonMois[i].tag = i+1
-            CollectionButtonMois[i].addTarget(self, action: "showSession:", forControlEvents: UIControlEvents.TouchUpInside)
+            CollectionButtonMois[i].addTarget(self, action: #selector(ConsultationPlanningViewController.showSession(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         }
         
         changeColorButton()
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        self.navigationItem.title = NSLocalizedString("Planning", comment: "planning")
+    }
     //Fonction permettant de changer la couleur des boutons si ils ont des sessions
     func changeColorButton() {
         var moisEnCour = String()
@@ -531,8 +540,10 @@ class ConsultationPlanningViewController: UIViewController {
                     && ( Int(arDateSession![2]) == Int(anneeEnCour)) {
                         let i = Int(arDateSession![0])!-1
                         CollectionButtonMois[i].setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
+                        
                         print("-> ok")
                 }
+                
                 /*
                 if entity.ses_date! == "0" + String(CollectionButtonMois[i].tag) + "/" + moisEnCour + "/" + anneeEnCour {
                 CollectionButtonMois[i].setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
@@ -595,6 +606,8 @@ class ConsultationPlanningViewController: UIViewController {
         }
         */
     }
+    
+   
 
     //Fonction permettant d'afficher les différentes session dans la scrollView
     func showSession(sender: UIButton) {
@@ -620,13 +633,13 @@ class ConsultationPlanningViewController: UIViewController {
         var anneeEnCour = String()
         
         //On cache les éléments précédents
-        for var i=0; i<tabButton.count; i++ {
+        for i in 0 ..< tabButton.count {
             tabButton[i].hidden = true
         }
-        for var i=0; i<tabLabel.count; i++ {
+        for i in 0 ..< tabLabel.count {
             tabLabel[i].hidden = true
         }
-        for var i=0; i<tabImgView.count; i++ {
+        for i in 0 ..< tabImgView.count {
             tabImgView[i].hidden = true
         }
         
@@ -693,13 +706,14 @@ class ConsultationPlanningViewController: UIViewController {
                         viewInScrollView.addSubview(imageView)
                         tabImgView.append(imageView)
                         
-                        let buttonNomSession = UIButton(frame: CGRectMake(0, 0, 262, 22))
+                        let buttonNomSession = UIButton(frame: CGRectMake(0, 0, 262, 90))
                         buttonNomSession.setTitle(session.ses_nom, forState: UIControlState.Normal)
+                            print("ALX : \(session.ses_nom)")
                         buttonNomSession.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
                         buttonNomSession.titleLabel!.font =  UIFont(name: "BNPPSANS-Regular", size: 16)
                         buttonNomSession.center = CGPointMake(posXBoutonNomSession, posYBoutonNomSession)
                         buttonNomSession.tag = Int(session.ses_id!)
-                        buttonNomSession.addTarget(self, action: "clickButtonDetailSession:", forControlEvents: UIControlEvents.TouchUpInside)
+                        buttonNomSession.addTarget(self, action: #selector(ConsultationPlanningViewController.clickButtonDetailSession(_:)), forControlEvents: UIControlEvents.TouchUpInside)
                         buttonNomSession.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
                         buttonNomSession.enabled = true
                         viewInScrollView.addSubview(buttonNomSession)
@@ -745,7 +759,7 @@ class ConsultationPlanningViewController: UIViewController {
                         
                         if (firstPassage == 1) {
                             scrollView.contentSize.height += CGFloat(90)
-                            firstPassage++
+                            firstPassage += 1
                         } else {
                           scrollView.contentSize.height += CGFloat(59)
                         }
@@ -843,7 +857,7 @@ class ConsultationPlanningViewController: UIViewController {
                         let imageView = UIImageView(image: image!)
                         imageView.frame = CGRect(x: posXPictoPuceViolet, y: posYPictoPuceViolet, width: 10, height: 10)
                         imageView.contentMode = UIViewContentMode.ScaleAspectFit
-                        viewInScrollView.addSubview(imageView)
+                        scrollView.addSubview(imageView)
                         tabImgView.append(imageView)
                         
                         let buttonNomSession = UIButton(frame: CGRectMake(0, 0, 262, 22))
@@ -996,7 +1010,7 @@ class ConsultationPlanningViewController: UIViewController {
         var currentYear = Int()
         var currentMonth = Int()
         
-        for var i=0; i<CollectionButtonMois.count; i++ {
+        for i in 0 ..< CollectionButtonMois.count {
             CollectionButtonMois[i].setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         }
         
@@ -1031,9 +1045,9 @@ class ConsultationPlanningViewController: UIViewController {
         //Si le mois en cour est Janvier, on change l'année. Sinon on fait juste le mois en cour -1
         if currentMonth == 12 {
             currentMonth = 01
-            currentYear++
+            currentYear += 1
         } else {
-            currentMonth++
+            currentMonth += 1
         }
         
         //On enregistre les nouvelles valeurs dans les tables TMPMOISENCOUR et TMPANNEENCOUR
@@ -1080,7 +1094,7 @@ class ConsultationPlanningViewController: UIViewController {
         var currentYear = Int()
         var currentMonth = Int()
         
-        for var i=0; i<CollectionButtonMois.count; i++ {
+        for i in 0 ..< CollectionButtonMois.count {
             CollectionButtonMois[i].setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         }
         
@@ -1115,9 +1129,9 @@ class ConsultationPlanningViewController: UIViewController {
         //Si le mois en cour est Janvier, on change l'année. Sinon on fait juste le mois en cour -1
         if currentMonth == 01 {
             currentMonth = 12
-            currentYear--
+            currentYear -= 1
         } else {
-            currentMonth--
+            currentMonth -= 1
         }
         
         //On enregistre les nouvelles valeurs dans les tables TMPMOISENCOUR et TMPANNEENCOUR
@@ -1198,12 +1212,12 @@ class ConsultationPlanningViewController: UIViewController {
     
     func updateCalendar(month: Int, year: Int){
         //Table TMPMOISENCOUR
-        var managedContextTmpMois = appliDelegate.managedObjectContext
-        var fetchRequestTmpMois = NSFetchRequest(entityName: "TMPMOISENCOUR")
+        _ = appliDelegate.managedObjectContext
+        _ = NSFetchRequest(entityName: "TMPMOISENCOUR")
         
         //Table TMPANNEENCOUR
-        var managedContextTmpAnnee = appliDelegate.managedObjectContext
-        var fetchRequestTmpAnnee = NSFetchRequest(entityName: "TMPANNEENCOUR")
+        _ = appliDelegate.managedObjectContext
+        _ = NSFetchRequest(entityName: "TMPANNEENCOUR")
         
         CollectionButtonMois.removeAll()
         
@@ -1246,22 +1260,22 @@ class ConsultationPlanningViewController: UIViewController {
         //print(componentsTest.weekday)
         
         //Affichage des boutons cachés avant
-        for var i=0; i<CollectionButton1.count; i++ {
+        for i in 0 ..< CollectionButton1.count {
             CollectionButton1[i].hidden = false
         }
-        for var i=0; i<CollectionButton5.count; i++ {
+        for i in 0 ..< CollectionButton5.count {
             CollectionButton5[i].hidden = false
         }
-        for var i=0; i<CollectionButton6.count; i++ {
+        for i in 0 ..< CollectionButton6.count {
             CollectionButton6[i].hidden = false
         }
         
         if componentsTest.weekday <= 6 && componentsTest.weekday != 1 {
-            for var i=0; i<CollectionButton6.count; i++ {
+            for i in 0 ..< CollectionButton6.count {
                 CollectionButton6[i].hidden = true
             }
         } else {
-            for var i=0; i<CollectionButton6.count; i++ {
+            for i in 0 ..< CollectionButton6.count {
                 CollectionButton6[i].hidden = false
             }
         }
@@ -1269,37 +1283,37 @@ class ConsultationPlanningViewController: UIViewController {
         switch componentsTest.weekday {
             //Jour de départ : Dimanche
         case 1:
-            for var i=0; i<CollectionButton1.count-1; i++ {
+            for i in 0 ..< CollectionButton1.count-1 {
                 CollectionButton1[i].hidden = true
             }
             
-            for var i=6;i<CollectionButton1.count;i++ {
-                compteurDeJours++
+            for i in 6 ..< CollectionButton1.count {
+                compteurDeJours += 1
                 CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton1[i])
             }
             
-            for var i=0;i<CollectionButton2.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton2.count {
+                compteurDeJours += 1
                 CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton2[i])
             }
             
-            for var i=0;i<CollectionButton3.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton3.count {
+                compteurDeJours += 1
                 CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton3[i])
             }
             
-            for var i=0;i<CollectionButton4.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton4.count {
+                compteurDeJours += 1
                 CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton4[i])
             }
             
-            for var i=0;i<CollectionButton5.count;i++ {
+            for i in 0 ..< CollectionButton5.count {
                 if compteurDeJours < nbDay {
-                    compteurDeJours++
+                    compteurDeJours += 1
                     CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                     CollectionButtonMois.append(CollectionButton5[i])
                 } else {
@@ -1307,9 +1321,9 @@ class ConsultationPlanningViewController: UIViewController {
                 }
             }
             
-            for var i=0;i<CollectionButton6.count;i++ {
+            for i in 0 ..< CollectionButton6.count {
                 if compteurDeJours < nbDay {
-                    compteurDeJours++
+                    compteurDeJours += 1
                     CollectionButton6[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                     CollectionButtonMois.append(CollectionButton6[i])
                 } else {
@@ -1318,33 +1332,33 @@ class ConsultationPlanningViewController: UIViewController {
             }
             //Jour de départ : Lundi
         case 2:
-            for var i=0;i<CollectionButton1.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton1.count {
+                compteurDeJours += 1
                 CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton1[i])
             }
             
-            for var i=0;i<CollectionButton2.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton2.count {
+                compteurDeJours += 1
                 CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton2[i])
             }
             
-            for var i=0;i<CollectionButton3.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton3.count {
+                compteurDeJours += 1
                 CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton3[i])
             }
             
-            for var i=0;i<CollectionButton4.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton4.count {
+                compteurDeJours += 1
                 CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton4[i])
             }
             
-            for var i=0;i<CollectionButton5.count;i++ {
+            for i in 0 ..< CollectionButton5.count {
                 if compteurDeJours < nbDay {
-                    compteurDeJours++
+                    compteurDeJours += 1
                     CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                     CollectionButtonMois.append(CollectionButton5[i])
                 } else {
@@ -1355,33 +1369,33 @@ class ConsultationPlanningViewController: UIViewController {
         case 3:
             CollectionButton1[0].hidden = true
             
-            for var i=1;i<CollectionButton1.count;i++ {
-                compteurDeJours++
+            for i in 1 ..< CollectionButton1.count {
+                compteurDeJours += 1
                 CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton1[i])
             }
             
-            for var i=0;i<CollectionButton2.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton2.count {
+                compteurDeJours += 1
                 CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton2[i])
             }
             
-            for var i=0;i<CollectionButton3.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton3.count {
+                compteurDeJours += 1
                 CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton3[i])
             }
             
-            for var i=0;i<CollectionButton4.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton4.count {
+                compteurDeJours += 1
                 CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton4[i])
             }
             
-            for var i=0;i<CollectionButton5.count;i++ {
+            for i in 0 ..< CollectionButton5.count {
                 if compteurDeJours < nbDay {
-                    compteurDeJours++
+                    compteurDeJours += 1
                     CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                     CollectionButtonMois.append(CollectionButton5[i])
                 } else {
@@ -1390,37 +1404,37 @@ class ConsultationPlanningViewController: UIViewController {
             }
             //Jour de départ : Mercredi
         case 4:
-            for var i=0; i<CollectionButton1.count-5; i++ {
+            for i in 0 ..< CollectionButton1.count-5 {
                 CollectionButton1[i].hidden = true
             }
             
-            for var i=2;i<CollectionButton1.count;i++ {
-                compteurDeJours++
+            for i in 2 ..< CollectionButton1.count {
+                compteurDeJours += 1
                 CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton1[i])
             }
             
-            for var i=0;i<CollectionButton2.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton2.count {
+                compteurDeJours += 1
                 CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton2[i])
             }
             
-            for var i=0;i<CollectionButton3.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton3.count {
+                compteurDeJours += 1
                 CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton3[i])
             }
             
-            for var i=0;i<CollectionButton4.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton4.count {
+                compteurDeJours += 1
                 CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton4[i])
             }
             
-            for var i=0;i<CollectionButton5.count;i++ {
+            for i in 0 ..< CollectionButton5.count {
                 if compteurDeJours < nbDay {
-                    compteurDeJours++
+                    compteurDeJours += 1
                     CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                     CollectionButtonMois.append(CollectionButton5[i])
                 } else {
@@ -1429,37 +1443,37 @@ class ConsultationPlanningViewController: UIViewController {
             }
             //Jour de départ : Jeudi
         case 5:
-            for var i=0; i<CollectionButton1.count-4; i++ {
+            for i in 0 ..< CollectionButton1.count-4 {
                 CollectionButton1[i].hidden = true
             }
             
-            for var i=3;i<CollectionButton1.count;i++ {
-                compteurDeJours++
+            for i in 3 ..< CollectionButton1.count {
+                compteurDeJours += 1
                 CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton1[i])
             }
             
-            for var i=0;i<CollectionButton2.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton2.count {
+                compteurDeJours += 1
                 CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton2[i])
             }
             
-            for var i=0;i<CollectionButton3.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton3.count {
+                compteurDeJours += 1
                 CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton3[i])
             }
             
-            for var i=0;i<CollectionButton4.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton4.count {
+                compteurDeJours += 1
                 CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton4[i])
             }
             
-            for var i=0;i<CollectionButton5.count;i++ {
+            for i in 0 ..< CollectionButton5.count {
                 if compteurDeJours < nbDay {
-                    compteurDeJours++
+                    compteurDeJours += 1
                     CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                     CollectionButtonMois.append(CollectionButton5[i])
                 } else {
@@ -1468,37 +1482,37 @@ class ConsultationPlanningViewController: UIViewController {
             }
             //Jour de départ : Vendredi
         case 6:
-            for var i=0; i<CollectionButton1.count-3; i++ {
+            for i in 0 ..< CollectionButton1.count-3 {
                 CollectionButton1[i].hidden = true
             }
             
-            for var i=4;i<CollectionButton1.count;i++ {
-                compteurDeJours++
+            for i in 4 ..< CollectionButton1.count {
+                compteurDeJours += 1
                 CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton1[i])
             }
             
-            for var i=0;i<CollectionButton2.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton2.count {
+                compteurDeJours += 1
                 CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton2[i])
             }
             
-            for var i=0;i<CollectionButton3.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton3.count {
+                compteurDeJours += 1
                 CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton3[i])
             }
             
-            for var i=0;i<CollectionButton4.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton4.count {
+                compteurDeJours += 1
                 CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton4[i])
             }
             
-            for var i=0;i<CollectionButton5.count;i++ {
+            for i in 0 ..< CollectionButton5.count {
                 if compteurDeJours < nbDay {
-                    compteurDeJours++
+                    compteurDeJours += 1
                     CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                     CollectionButtonMois.append(CollectionButton5[i])
                 } else {
@@ -1508,37 +1522,37 @@ class ConsultationPlanningViewController: UIViewController {
             
             //Jour de départ : Samedi
         case 7:
-            for var i=0; i<CollectionButton1.count-2; i++ {
+            for i in 0 ..< CollectionButton1.count-2 {
                 CollectionButton1[i].hidden = true
             }
             
-            for var i=5;i<CollectionButton1.count;i++ {
-                compteurDeJours++
+            for i in 5 ..< CollectionButton1.count {
+                compteurDeJours += 1
                 CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton1[i])
             }
             
-            for var i=0;i<CollectionButton2.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton2.count {
+                compteurDeJours += 1
                 CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton2[i])
             }
             
-            for var i=0;i<CollectionButton3.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton3.count {
+                compteurDeJours += 1
                 CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton3[i])
             }
             
-            for var i=0;i<CollectionButton4.count;i++ {
-                compteurDeJours++
+            for i in 0 ..< CollectionButton4.count {
+                compteurDeJours += 1
                 CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                 CollectionButtonMois.append(CollectionButton4[i])
             }
             
-            for var i=0;i<CollectionButton5.count;i++ {
+            for i in 0 ..< CollectionButton5.count {
                 if compteurDeJours < nbDay {
-                    compteurDeJours++
+                    compteurDeJours += 1
                     CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                     CollectionButtonMois.append(CollectionButton5[i])
                 } else {
@@ -1546,9 +1560,9 @@ class ConsultationPlanningViewController: UIViewController {
                 }
             }
             
-            for var i=0;i<CollectionButton6.count;i++ {
+            for i in 0 ..< CollectionButton6.count {
                 if compteurDeJours < nbDay {
-                    compteurDeJours++
+                    compteurDeJours += 1
                     CollectionButton6[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
                     CollectionButtonMois.append(CollectionButton6[i])
                 } else {
@@ -1559,9 +1573,9 @@ class ConsultationPlanningViewController: UIViewController {
             print("Défaut")
         }
         
-        for var i=0;i<CollectionButtonMois.count; i++ {
+        for i in 0 ..< CollectionButtonMois.count {
             CollectionButtonMois[i].tag = i+1
-            CollectionButtonMois[i].addTarget(self, action: "showSession:", forControlEvents: UIControlEvents.TouchUpInside)
+            CollectionButtonMois[i].addTarget(self, action: #selector(ConsultationPlanningViewController.showSession(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         }
         
         changeColorButton()
@@ -1598,5 +1612,428 @@ class ConsultationPlanningViewController: UIViewController {
         }
     }
 
-
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+            
+                
+                //Réinitialisation de la base pour le mois en cour et l'année en cour
+                //Table TMPMOISENCOUR
+                var managedContextTmpMois = appliDelegate.managedObjectContext
+                var fetchRequestTmpMois = NSFetchRequest(entityName: "TMPMOISENCOUR")
+                
+                //Table TMPANNEENCOUR
+                var managedContextTmpAnnee = appliDelegate.managedObjectContext
+                var fetchRequestTmpAnnee = NSFetchRequest(entityName: "TMPANNEENCOUR")
+                
+                self.globalScrollView.delegate = self
+        
+                //self.planningScrollView.contentSize = CGSizeMake(383,0)
+                //let psc = self.appliDelegate.persistentStoreCoordinator
+                
+                let deleteRequestTmpMois = NSBatchDeleteRequest(fetchRequest: fetchRequestTmpMois)
+                do {
+                    //try psc.executeRequest(deleteRequestTmpMois, withContext: managedContextTmpMois)
+                    try managedContextTmpMois.executeRequest(deleteRequestTmpMois)
+                    try managedContextTmpMois.save()
+                } catch {
+                    print("Erreur lors de la purge de la table TMPMOISENCOUR")
+                }
+                
+                let deleteRequestTmpAnnee = NSBatchDeleteRequest(fetchRequest: fetchRequestTmpAnnee)
+                do {
+                    //try psc.executeRequest(deleteRequestTmpAnnee, withContext: managedContextTmpAnnee)
+                    try managedContextTmpAnnee.executeRequest(deleteRequestTmpAnnee)
+                    try managedContextTmpAnnee.save()
+                } catch {
+                    print("Erreur lors de la purge de la table TMPANNEENCOUR")
+                }
+                
+                self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+                self.navigationController!.navigationItem.backBarButtonItem?.title = "Back"
+                
+                super.viewDidLoad()
+                
+                CollectionButtonMois.removeAll()
+                
+                let dateFormatterYear = NSDateFormatter()
+                let dateFormatterYearShort = NSDateFormatter()
+                let dateFormatterMonth = NSDateFormatter()
+                let dateFormatterDay = NSDateFormatter()
+                let date = NSDate()
+                dateFormatterYear.dateFormat = "yyyy"
+                dateFormatterYearShort.dateFormat = "yy"
+                dateFormatterMonth.dateFormat = "MM"
+                dateFormatterDay.dateFormat = "dd"
+                let calendar = NSCalendar.currentCalendar()
+                var compteurDeJours = 0
+                
+                //Récupère le premier jour du mois
+                let components = calendar.components([.Year, .Month], fromDate: date)
+                let startOfMonth = calendar.dateFromComponents(components)!
+                //print(dateFormatter.stringFromDate(startOfMonth))
+                
+                //Lecture de la base
+                //firstSaturdayMarch2015DateComponents.year = anneeBase -1
+                //firstSaturdayMarch2015DateComponents.month = moisBase -1
+                
+                let comps2 = NSDateComponents()
+                comps2.month = 1
+                comps2.day = -1
+                let endOfMonth = calendar.dateByAddingComponents(comps2, toDate: startOfMonth, options: [])!
+                let nbDay = Int(dateFormatterDay.stringFromDate(endOfMonth))!
+                //print(dateFormatter.stringFromDate(endOfMonth))
+                
+                //Récupére le "weekday" (le 1 jour du mois)
+                let firstSaturdayMarch2015DateComponents = NSDateComponents()
+                firstSaturdayMarch2015DateComponents.year = Int(dateFormatterYear.stringFromDate(startOfMonth))!
+                firstSaturdayMarch2015DateComponents.month = Int(dateFormatterMonth.stringFromDate(startOfMonth))!
+                
+                anneeLabel.text = dateFormatterYear.stringFromDate(startOfMonth)
+                changeNameMonth(Int(dateFormatterMonth.stringFromDate(startOfMonth))!)
+                
+                //firstSaturdayMarch2015DateComponents.year = 2015
+                //firstSaturdayMarch2015DateComponents.month = 08
+                
+                let firstSaturdayMarch2015Date = calendar.dateFromComponents(firstSaturdayMarch2015DateComponents)!
+                let componentsTest = calendar.components([.Weekday], fromDate: firstSaturdayMarch2015Date)
+                //print(componentsTest.weekday)
+                
+                //Stockage du mois et de l'année en cour
+                //Table TMPMOISENCOUR
+                managedContextTmpMois = appliDelegate.managedObjectContext
+                fetchRequestTmpMois = NSFetchRequest(entityName: "TMPMOISENCOUR")
+                
+                //Table TMPANNEENCOUR
+                managedContextTmpAnnee = appliDelegate.managedObjectContext
+                fetchRequestTmpAnnee = NSFetchRequest(entityName: "TMPANNEENCOUR")
+                
+                //Enregistrement dans les tables TMPMOISENCOUR et TMPANNEENCOUR
+                let entityDescriptionTmpMois = NSEntityDescription.entityForName("TMPMOISENCOUR", inManagedObjectContext: managedContextTmpMois)
+                let tmpmoisencour = TMPMOISENCOUR(entity: entityDescriptionTmpMois!, insertIntoManagedObjectContext: managedContextTmpMois)
+                
+                tmpmoisencour.value_mois = Int(dateFormatterMonth.stringFromDate(startOfMonth))!
+                
+                do {
+                    try managedContextTmpMois.save()
+                } catch {
+                    print("Échec de la sauvegarde de la table TMPMOISENCOUR")
+                }
+                
+                let entityDescriptionTmpAnnee = NSEntityDescription.entityForName("TMPANNEENCOUR", inManagedObjectContext: managedContextTmpAnnee)
+                let tmpanneeencour = TMPANNEENCOUR(entity: entityDescriptionTmpAnnee!, insertIntoManagedObjectContext: managedContextTmpAnnee)
+                
+                tmpanneeencour.value_annee = Int(dateFormatterYear.stringFromDate(startOfMonth))!
+                
+                do {
+                    try managedContextTmpAnnee.save()
+                } catch {
+                    print("Échec de la sauvegarde de la table TMPANNEENCOUR")
+                }
+                
+                
+                if componentsTest.weekday <= 6 && componentsTest.weekday != 1 {
+                    for i in 0 ..< CollectionButton6.count {
+                        CollectionButton6[i].hidden = true
+                    }
+                } else {
+                    for i in 0 ..< CollectionButton6.count {
+                        CollectionButton6[i].hidden = false
+                    }
+                }
+                
+                switch componentsTest.weekday {
+                    //Jour de départ : Dimanche
+                case 1:
+                    for i in 0 ..< CollectionButton1.count-1 {
+                        CollectionButton1[i].hidden = true
+                    }
+                    
+                    for i in 6 ..< CollectionButton1.count {
+                        compteurDeJours += 1
+                        CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton1[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton2.count {
+                        compteurDeJours += 1
+                        CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton2[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton3.count {
+                        compteurDeJours += 1
+                        CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton3[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton4.count {
+                        compteurDeJours += 1
+                        CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton4[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton5.count {
+                        compteurDeJours += 1
+                        CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton5[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton6.count {
+                        if compteurDeJours < nbDay {
+                            compteurDeJours += 1
+                            CollectionButton6[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                            CollectionButtonMois.append(CollectionButton6[i])
+                        } else {
+                            CollectionButton6[i].hidden = true
+                        }
+                    }
+                    //Jour de départ : Lundi
+                case 2:
+                    for i in 0 ..< CollectionButton1.count {
+                        compteurDeJours += 1
+                        CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton1[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton2.count {
+                        compteurDeJours += 1
+                        CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton2[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton3.count {
+                        compteurDeJours += 1
+                        CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton3[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton4.count {
+                        compteurDeJours += 1
+                        CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton4[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton5.count {
+                        if compteurDeJours < nbDay {
+                            compteurDeJours += 1
+                            CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                            CollectionButtonMois.append(CollectionButton5[i])
+                        } else {
+                            CollectionButton5[i].hidden = true
+                        }
+                    }
+                    //Jour de départ : Mardi
+                case 3:
+                    CollectionButton1[0].hidden = true
+                    
+                    for i in 1 ..< CollectionButton1.count {
+                        compteurDeJours += 1
+                        CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton1[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton2.count {
+                        compteurDeJours += 1
+                        CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton2[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton3.count {
+                        compteurDeJours += 1
+                        CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton3[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton4.count {
+                        compteurDeJours += 1
+                        CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton4[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton5.count {
+                        if compteurDeJours < nbDay {
+                            compteurDeJours += 1
+                            CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                            CollectionButtonMois.append(CollectionButton5[i])
+                        } else {
+                            CollectionButton5[i].hidden = true
+                        }
+                    }
+                    //Jour de départ : Mercredi
+                case 4:
+                    for i in 0 ..< CollectionButton1.count-5 {
+                        CollectionButton1[i].hidden = true
+                    }
+                    
+                    for i in 2 ..< CollectionButton1.count {
+                        compteurDeJours += 1
+                        CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton1[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton2.count {
+                        compteurDeJours += 1
+                        CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton2[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton3.count {
+                        compteurDeJours += 1
+                        CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton3[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton4.count {
+                        compteurDeJours += 1
+                        CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton4[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton5.count {
+                        if compteurDeJours < nbDay {
+                            compteurDeJours += 1
+                            CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                            CollectionButtonMois.append(CollectionButton5[i])
+                        } else {
+                            CollectionButton5[i].hidden = true
+                        }
+                    }
+                    //Jour de départ : Jeudi
+                case 5:
+                    for i in 0 ..< CollectionButton1.count-4 {
+                        CollectionButton1[i].hidden = true
+                    }
+                    
+                    for i in 3 ..< CollectionButton1.count {
+                        compteurDeJours += 1
+                        CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton1[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton2.count {
+                        compteurDeJours += 1
+                        CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton2[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton3.count {
+                        compteurDeJours += 1
+                        CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton3[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton4.count {
+                        compteurDeJours += 1
+                        CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton4[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton5.count {
+                        if compteurDeJours < nbDay {
+                            compteurDeJours += 1
+                            CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                            CollectionButtonMois.append(CollectionButton5[i])
+                        } else {
+                            CollectionButton5[i].hidden = true
+                        }
+                    }
+                    //Jour de départ : Vendredi
+                case 6:
+                    for i in 0 ..< CollectionButton1.count-3 {
+                        CollectionButton1[i].hidden = true
+                    }
+                    
+                    for i in 4 ..< CollectionButton1.count {
+                        compteurDeJours += 1
+                        CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton1[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton2.count {
+                        compteurDeJours += 1
+                        CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton2[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton3.count {
+                        compteurDeJours += 1
+                        CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton3[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton4.count {
+                        compteurDeJours += 1
+                        CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton4[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton5.count {
+                        if compteurDeJours < nbDay {
+                            compteurDeJours += 1
+                            CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                            CollectionButtonMois.append(CollectionButton5[i])
+                        } else {
+                            CollectionButton5[i].hidden = true
+                        }
+                    }
+                    
+                    //Jour de départ : Samedi
+                case 7:
+                    for i in 0 ..< CollectionButton1.count-2 {
+                        CollectionButton1[i].hidden = true
+                    }
+                    
+                    for i in 5 ..< CollectionButton1.count {
+                        compteurDeJours += 1
+                        CollectionButton1[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton1[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton2.count {
+                        compteurDeJours += 1
+                        CollectionButton2[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton2[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton3.count {
+                        compteurDeJours += 1
+                        CollectionButton3[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton3[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton4.count {
+                        compteurDeJours += 1
+                        CollectionButton4[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton4[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton5.count {
+                        compteurDeJours += 1
+                        CollectionButton5[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                        CollectionButtonMois.append(CollectionButton5[i])
+                    }
+                    
+                    for i in 0 ..< CollectionButton6.count {
+                        if compteurDeJours < nbDay {
+                            compteurDeJours += 1
+                            CollectionButton6[i].setTitle(String(compteurDeJours), forState: UIControlState.Normal)
+                            CollectionButtonMois.append(CollectionButton6[i])
+                        } else {
+                            CollectionButton6[i].hidden = true
+                        }
+                    }
+                default :
+                    print("Défaut")
+                }
+                
+                for i in 0 ..< CollectionButtonMois.count {
+                    CollectionButtonMois[i].tag = i+1
+                    CollectionButtonMois[i].addTarget(self, action: #selector(ConsultationPlanningViewController.showSession(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+                }
+                
+                changeColorButton()
+                
+        
+        
+    }
 }

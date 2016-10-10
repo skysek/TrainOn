@@ -19,6 +19,7 @@ class MainViewController: UIViewController {
     @IBOutlet var gestionClients: UIButton!
     @IBOutlet var calendrier: UIButton!
     @IBOutlet var moduleFormation: UIButton!
+    @IBOutlet var scrollView: UIScrollView!
     
     //ID de la personne connecté
     var loginPersonneConnectée = String()
@@ -26,6 +27,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         self.navigationController!.navigationBar.barTintColor = UIColor(red: 0/250, green: 150/250, blue: 94/250, alpha: 1.00)
+        self.scrollView.contentSize = CGSizeMake(320,530)
         
         //On récupère en local les variables
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -40,40 +42,40 @@ class MainViewController: UIViewController {
         //Table ENTREPRISE
         let managedContextEnt = appliDelegate.managedObjectContext
         let fetchRequestEnt = NSFetchRequest(entityName: "ENTREPRISE")
-        let countEnt = managedContextEnt.countForFetchRequest(fetchRequestEnt, error: nil)
+        let countEnt = try! managedContextEnt.countForFetchRequest(fetchRequestEnt)
         
         //Table COLLABORATEUR
         let managedContextCol = appliDelegate.managedObjectContext
         let fetchRequestCol = NSFetchRequest(entityName: "COLLABORATEUR")
-        let countCol = managedContextCol.countForFetchRequest(fetchRequestCol, error: nil)
+        let countCol = try! managedContextCol.countForFetchRequest(fetchRequestCol)
         
         //Table MODULE
         let managedContextMod = appliDelegate.managedObjectContext
         let fetchRequestMod = NSFetchRequest(entityName: "MODULE")
-        let countMod = managedContextMod.countForFetchRequest(fetchRequestMod, error: nil)
+        let countMod = try! managedContextMod.countForFetchRequest(fetchRequestMod)
         
         //Table CATEGORIE
         let managedContextCat = appliDelegate.managedObjectContext
         let fetchRequestCat = NSFetchRequest(entityName: "CATEGORIE")
-        let countCat = managedContextCat.countForFetchRequest(fetchRequestCat, error: nil)
+        let countCat = try! managedContextCat.countForFetchRequest(fetchRequestCat)
         
         //Table SESSION
         let managedContextSes = appliDelegate.managedObjectContext
         let fetchRequestSes = NSFetchRequest(entityName: "SESSION")
-        let countSes = managedContextSes.countForFetchRequest(fetchRequestSes, error: nil)
+        let countSes = try! managedContextSes.countForFetchRequest(fetchRequestSes)
         
         //Table SESSIONCOLLABORATEUR
         let managedContextSesCol = appliDelegate.managedObjectContext
         let fetchRequestSesCol = NSFetchRequest(entityName: "SESSIONCOLLABORATEUR")
-        let countSesCol = managedContextSesCol.countForFetchRequest(fetchRequestSesCol, error: nil)
+        let countSesCol = try! managedContextSesCol.countForFetchRequest(fetchRequestSesCol)
         
         //Table SESSIONMODULE
         let managedContextSesMod = appliDelegate.managedObjectContext
         let fetchRequestSesMod = NSFetchRequest(entityName: "SESSIONMODULE")
-        let countSesMod = managedContextSesMod.countForFetchRequest(fetchRequestSesMod, error: nil)
+        let countSesMod = try! managedContextSesMod.countForFetchRequest(fetchRequestSesMod)
         
         if countEnt == 0 {
-            for var i=0; i<3; i++ {
+            for i in 0 ..< 3 {
                 
                 let entityDescriptionEnt = NSEntityDescription.entityForName("ENTREPRISE", inManagedObjectContext: managedContextEnt)
                 let entreprise = ENTREPRISE(entity: entityDescriptionEnt!, insertIntoManagedObjectContext: managedContextEnt)
@@ -106,7 +108,7 @@ class MainViewController: UIViewController {
         }
         
         if countCol == 0 {
-            for var i=0; i<3; i++ {
+            for i in 0 ..< 3 {
                 
                 let entityDescriptionCol = NSEntityDescription.entityForName("COLLABORATEUR", inManagedObjectContext: managedContextCol)
                 let collaborateur = COLLABORATEUR(entity: entityDescriptionCol!, insertIntoManagedObjectContext: managedContextCol)
@@ -146,7 +148,7 @@ class MainViewController: UIViewController {
         }
         
         if countSes == 0 {
-            for var i=0; i<5; i++ {
+            for i in 0 ..< 5 {
                 
                 let entityDescriptionSes = NSEntityDescription.entityForName("SESSION", inManagedObjectContext: managedContextSes)
                 let session = SESSION(entity: entityDescriptionSes!, insertIntoManagedObjectContext: managedContextSes)
@@ -154,35 +156,35 @@ class MainViewController: UIViewController {
                 switch i {
                 case 0 :
                     session.ses_id = 1
-                    session.ses_nom = "Cannon - Vendre Top Full"
+                    session.ses_nom = "Canon - Vendre Top Full"
                     session.ses_detail = "detailSession"
                     session.ses_date = "13/12/2015"
                     session.ses_heure_deb = "11:00"
                     session.ses_heure_fin = "11:30"
                 case 1 :
                     session.ses_id = 2
-                    session.ses_nom = "Cannon - Crédit-Bail ELS"
+                    session.ses_nom = "Canon - Crédit-Bail ELS"
                     session.ses_detail = "detailSession"
                     session.ses_date = "02/12/2015"
                     session.ses_heure_deb = "11:00"
                     session.ses_heure_fin = "11:30"
                 case 2 :
                     session.ses_id = 3
-                    session.ses_nom = "Cannon - Crédit-Bail ELS"
+                    session.ses_nom = "Canon - Crédit-Bail ELS"
                     session.ses_detail = "detailSession"
                     session.ses_date = "02/12/2015"
                     session.ses_heure_deb = "11:00"
                     session.ses_heure_fin = "11:30"
                 case 3 :
                     session.ses_id = 4
-                    session.ses_nom = "Cannon - Crédit-Bail ELS"
+                    session.ses_nom = "Canon - Crédit-Bail ELS"
                     session.ses_detail = "detailSession"
                     session.ses_date = "02/12/2015"
                     session.ses_heure_deb = "11:00"
                     session.ses_heure_fin = "11:30"
                 case 4 :
                     session.ses_id = 5
-                    session.ses_nom = "Cannon - Crédit-Bail ELS"
+                    session.ses_nom = "Canon - Crédit-Bail ELS"
                     session.ses_detail = "detailSession"
                     session.ses_date = "02/12/2015"
                     session.ses_heure_deb = "11:00"
@@ -194,7 +196,7 @@ class MainViewController: UIViewController {
         }
         
         if countSesCol == 0 {
-            for var i=0; i<5; i++ {
+            for i in 0 ..< 5 {
                 
                 let entityDescriptionSesCol = NSEntityDescription.entityForName("SESSIONCOLLABORATEUR", inManagedObjectContext: managedContextSesCol)
                 let sessionCol = SESSIONCOLLABORATEUR(entity: entityDescriptionSesCol!, insertIntoManagedObjectContext: managedContextSesCol)
@@ -222,7 +224,7 @@ class MainViewController: UIViewController {
         }
         
         if countSesMod == 0 {
-            for var i=0; i<5; i++ {
+            for i in 0 ..< 5 {
                 
                 let entityDescriptionSesMod = NSEntityDescription.entityForName("SESSIONMODULE", inManagedObjectContext: managedContextSesMod)
                 let sessionMod = SESSIONMODULE(entity: entityDescriptionSesMod!, insertIntoManagedObjectContext: managedContextSesMod)
@@ -286,17 +288,31 @@ class MainViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
 
     //Différentes actions suivants les boutons qui sont appuyés
+    @IBAction func goToHelp(sender: AnyObject) {
+        let alert = UIAlertView(title: NSLocalizedString("Contact", comment: "Titre message alerte contact"), message: NSLocalizedString("train.on@dmf.fr",comment: "message d'alerte"), delegate: nil, cancelButtonTitle: "OK")
+        alert.show()
+    }
     
+    @IBAction func goToCalendar2(sender: AnyObject) {
+        self.performSegueWithIdentifier("showPlanning", sender: self)
+    }
     @IBAction func goToCalendar(sender: AnyObject) {
         self.performSegueWithIdentifier("showPlanning", sender: self)
     }
     
+    @IBAction func goToContact2(sender: AnyObject) {
+        self.performSegueWithIdentifier("showContact", sender: self)
+    }
     @IBAction func goToContact(sender: AnyObject) {
         self.performSegueWithIdentifier("showContact", sender: self)
     }
-    
+    @IBAction func goToModuleFormation2(sender: AnyObject) {
+        self.performSegueWithIdentifier("showCategorieModuleFormation", sender: self)
+    }
     @IBAction func goToModuleFormation(sender: AnyObject) {
         self.performSegueWithIdentifier("showCategorieModuleFormation", sender: self)
     }
@@ -309,11 +325,11 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.navigationItem.title = NSLocalizedString("BIENVENUE", comment: "accueil")
+        self.navigationItem.title = NSLocalizedString("Train'ON", comment: "accueil")
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        self.navigationItem.title = "Back"
+    @IBAction func showHTML(sender: AnyObject) {
+        self.performSegueWithIdentifier("showHTML", sender: sender)
     }
     
     // MARK: - Navigation

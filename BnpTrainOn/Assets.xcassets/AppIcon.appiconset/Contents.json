@@ -13,7 +13,7 @@
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "icone_carre.png",
+      "filename" : "Icone-Train'On.png",
       "scale" : "2x"
     },
     {
@@ -22,8 +22,9 @@
       "scale" : "3x"
     },
     {
-      "idiom" : "iphone",
       "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "Icone Trainon-120-120.png",
       "scale" : "2x"
     },
     {

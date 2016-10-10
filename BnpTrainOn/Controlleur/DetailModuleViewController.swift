@@ -119,7 +119,7 @@ class DetailModuleViewController: UIViewController {
                 print("Erreur lors de la purge de la table TMPSESSION")
             }
             
-            let countTmpSesMod = managedContextTmpSesMod.countForFetchRequest(fetchRequestTmpSesMod, error: nil)
+            let countTmpSesMod = try! managedContextTmpSesMod.countForFetchRequest(fetchRequestTmpSesMod)
             
             if countTmpSesMod == 0 {
                     

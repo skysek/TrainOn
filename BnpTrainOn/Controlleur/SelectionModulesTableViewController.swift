@@ -16,7 +16,7 @@ import CoreData
 
 
 class SelectionModulesTableViewController: UITableViewController {
-    
+
     //Variables faisant le lien avec le CoreData
     var database = [NSManagedObject]()
     let appliDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -53,7 +53,7 @@ class SelectionModulesTableViewController: UITableViewController {
         }
         
         do {
-            let sortDescriptor = NSSortDescriptor(key: "cat_id", ascending: true)
+            let sortDescriptor = NSSortDescriptor(key: "cat_order", ascending: true)
             let sortDescriptors = [sortDescriptor]
             fetchRequestCat.sortDescriptors = sortDescriptors
             let fetchResults = try managedContextCat.executeFetchRequest(fetchRequestCat) as? [CATEGORIE]
@@ -128,20 +128,23 @@ class SelectionModulesTableViewController: UITableViewController {
         //let cell = tableView.dequeueReusableCellWithIdentifier("cellModule") as! CellCategorieModuleController
         let cell = tableView.dequeueReusableCellWithIdentifier("cellModule", forIndexPath: indexPath)
        
-            cell.textLabel?.text = tabModules[indexPath.section][indexPath.row].mod_nom!
+        cell.textLabel?.text = tabModules[indexPath.section][indexPath.row].mod_nom!
         cell.textLabel?.font = UIFont(name: "BNPPSans", size: 12)
+        cell.tintColor = UIColor(red: 3/255, green: 143/255, blue: 94/255, alpha: 1)
 
+        print("compare : \(Int(tabModules[indexPath.section][indexPath.row].mod_id!))")
         if tmpModIdSelected.contains(Int(tabModules[indexPath.section][indexPath.row].mod_id!)){
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.None
         }
-        print(Int(tabModules[indexPath.section][indexPath.row].mod_id!))
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        
+        print("indexPath : \(indexPath)")
         var selected = false
         if cell!.selected
         {
@@ -149,16 +152,16 @@ class SelectionModulesTableViewController: UITableViewController {
             if cell!.accessoryType == UITableViewCellAccessoryType.None
             {
                 cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
+                print("id: \(tmpModIdSelected)")
                 selected = true
                 saveState(indexPath.section, row: indexPath.row, selected: selected )
             }
-            else if  tmpModIdSelected.count > 1
+            else if  tmpModIdSelected.count > 0
             {
                 cell!.accessoryType = UITableViewCellAccessoryType.None
                 selected = false
                 saveState(indexPath.section, row: indexPath.row, selected: selected )
             }
-            
             
         }
         

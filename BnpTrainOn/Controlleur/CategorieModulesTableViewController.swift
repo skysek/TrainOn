@@ -23,6 +23,8 @@ class CategorieModulesTableViewController: UITableViewController, UISearchBarDel
     var searchActive = false
     
     var catId = Int()
+    var catNom = String()
+    
     
     override func viewDidLoad() {
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
@@ -37,7 +39,7 @@ class CategorieModulesTableViewController: UITableViewController, UISearchBarDel
         let fetchRequestMod = NSFetchRequest(entityName: "MODULE")
         
         do {
-            let sortDescriptor = NSSortDescriptor(key: "cat_id", ascending: true)
+            let sortDescriptor = NSSortDescriptor(key: "cat_order", ascending: true)
             let sortDescriptors = [sortDescriptor]
             fetchRequestCat.sortDescriptors = sortDescriptors
             let fetchResults = try managedContextCat.executeFetchRequest(fetchRequestCat) as? [CATEGORIE]
@@ -68,6 +70,10 @@ class CategorieModulesTableViewController: UITableViewController, UISearchBarDel
         }
         
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.navigationItem.title = NSLocalizedString("Modules", comment: "modules")
     }
 
     override func didReceiveMemoryWarning() {
@@ -104,7 +110,11 @@ class CategorieModulesTableViewController: UITableViewController, UISearchBarDel
         return cell
     }
     
-    @IBAction func detailModule(sender: UIButton) {
+    @IBAction func dtlModule(sender: AnyObject) {
+        catId = sender.tag
+        performSegueWithIdentifier("showListeModule", sender: self)
+    }
+    @IBAction func detailModule(sender: AnyObject) {
         catId = sender.tag
         performSegueWithIdentifier("showListeModule", sender: self)
     }
@@ -131,6 +141,7 @@ class CategorieModulesTableViewController: UITableViewController, UISearchBarDel
         if segue.identifier == "showListeModule" {
             let listeModuleController = segue.destinationViewController as! ListeModuleTableViewController
             listeModuleController.catID = catId as NSNumber
+            listeModuleController.catNOM = catNom as String
         }
     }
     

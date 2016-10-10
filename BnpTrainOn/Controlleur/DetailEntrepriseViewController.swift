@@ -17,6 +17,7 @@ class DetailEntrepriseViewController: UIViewController {
     @IBOutlet var emailLabel: UILabel!
     @IBOutlet var telephoneEntLabel: UILabel!
     @IBOutlet var adresseEntLabel: UILabel!
+    @IBOutlet var scrollView: UIScrollView!
     
     var entID = Int()
     
@@ -24,6 +25,8 @@ class DetailEntrepriseViewController: UIViewController {
     let appliDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     override func viewDidLoad() {
+        
+        self.scrollView.contentSize = CGSizeMake(320, 550)
         
         //Table ENTREPRISE
         let managedContextEnt = appliDelegate.managedObjectContext
@@ -67,6 +70,7 @@ class DetailEntrepriseViewController: UIViewController {
         } catch {
             print("Erreur lors de la récupération des données de la table MODULE")
         }
+        
         
         super.viewDidLoad()
     }

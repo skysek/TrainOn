@@ -2,6 +2,18 @@
    Titre message alerte */
 "Ajout réussi" = "Success";
 
+/* message alerte */
+"Attention !" = "Warning !";
+
+/* message alerte */
+"Il doit y avoir au moins un contact et un module sélectionnés." = "There should be at least one training and one contact.";
+
+/* message alerte */
+"Il doit y avoir au moins un module sélectionné." = "There should be at least one training.";
+
+/* message alerte */
+"Il doit y avoir au moins un contact sélectionné." = "There should be at least one contact.";
+
 /* mois calendrier */
 "Aout" = "August";
 
@@ -30,10 +42,13 @@
 "L'entreprise a bien été ajouté." = "Angaben wurden gespeichert";
 
 /* message alerte */
-"La session a bien été modifiée." = "Angaben wurden gespeichert";
+"La session a bien été modifiée." = "Die schulung wurde geändert.";
 
 /* Message Alerte */
-"Le contact a bien été ajouté." = "Angaben wurden gespeichert";
+"Le contact a bien été ajouté." = "Die schulung wurde gespeichert.";
+
+/* Message Alerte */
+"Le contact a bien été modifié." = "Angaben wurden gespeichert";
 
 /* mois calendrier */
 "Mai" = "Mai";
@@ -70,4 +85,3 @@
 
 /* pour afficher un nombre de selection */
 "modules sélectionnés" = "Schulungs";
-

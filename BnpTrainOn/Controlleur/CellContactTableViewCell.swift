@@ -13,6 +13,7 @@ class CellContactTableViewCell: UITableViewCell {
     @IBOutlet var entrepriseName: UILabel!
     @IBOutlet var contactName: UILabel!
     @IBOutlet var button: UIButton!
+    @IBOutlet var button2: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

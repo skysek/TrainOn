@@ -15,13 +15,18 @@ class ListeModuleTableViewController: UITableViewController {
     let appliDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     var catID = NSNumber()
+    var catNOM = String()
     var modid = NSNumber()
     var tabModules = [MODULE]()
+    var tabCategories = [CATEGORIE]()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
+        print("-----------------")
+        print("ALX : catNom : \(catNOM)")
+        print("-----------------")
         //Table MODULE
         let managedContextMod = appliDelegate.managedObjectContext
         let fetchRequestMod = NSFetchRequest(entityName: "MODULE")
@@ -42,6 +47,29 @@ class ListeModuleTableViewController: UITableViewController {
             }
         } catch {
             print("Erreur lors de la récupération des données de la table MODULE")
+        }
+        
+        //Table CATEGORIE
+        let managedContextCat = appliDelegate.managedObjectContext
+        let fetchRequestCat = NSFetchRequest(entityName: "CATEGORIE")
+        
+        do {
+            let sortDescriptor = NSSortDescriptor(key: "cat_order", ascending: true)
+            let sortDescriptors = [sortDescriptor]
+            let predicate = NSPredicate(format: "cat_id = %@", catID)
+            fetchRequestCat.predicate = predicate
+            fetchRequestCat.sortDescriptors = sortDescriptors
+            let fetchResults = try managedContextCat.executeFetchRequest(fetchRequestCat) as? [CATEGORIE]
+            
+            tabCategories.removeAll()
+            
+            for categorie in fetchResults! {
+                
+                tabCategories.append(categorie)
+            }
+            print("tabCategories ::: \(tabCategories)")
+        } catch {
+            print("Erreur lors de la récupération des données de la table CATEGORIE")
         }
 
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
@@ -65,6 +93,34 @@ class ListeModuleTableViewController: UITableViewController {
         return 46
     }*/
     
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        //Table CATEGORIE
+        let managedContextCat = appliDelegate.managedObjectContext
+        let fetchRequestCat = NSFetchRequest(entityName: "CATEGORIE")
+        
+        do {
+            let sortDescriptor = NSSortDescriptor(key: "cat_order", ascending: true)
+            let sortDescriptors = [sortDescriptor]
+            let predicate = NSPredicate(format: "cat_id = %@", catID)
+            fetchRequestCat.predicate = predicate
+            fetchRequestCat.sortDescriptors = sortDescriptors
+            let fetchResults = try managedContextCat.executeFetchRequest(fetchRequestCat) as? [CATEGORIE]
+            
+            tabCategories.removeAll()
+            
+            for categorie in fetchResults! {
+                
+                tabCategories.append(categorie)
+            }
+            print("tabCategories ::: \(tabCategories)")
+        } catch {
+            print("Erreur lors de la récupération des données de la table CATEGORIE")
+        }
+        return tabCategories.last?.cat_nom
+        
+    }
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         var count = 0
@@ -80,7 +136,7 @@ class ListeModuleTableViewController: UITableViewController {
             let fetchResults = try managedContextMod.executeFetchRequest(fetchRequestMod) as? [MODULE]
             
             for _ in fetchResults! {
-                count++
+                count += 1
             }
         } catch {
             print("Erreur lors de la récupération des données de la table LOGIN")
@@ -98,6 +154,10 @@ class ListeModuleTableViewController: UITableViewController {
         return cell
     }
     
+    @IBAction func dtlModule(sender: UIButton) {
+        modid = sender.tag
+        performSegueWithIdentifier("showDetailModule", sender: self)
+    }
     @IBAction func detailModule(sender: UIButton) {
         modid = sender.tag
         performSegueWithIdentifier("showDetailModule", sender: self)

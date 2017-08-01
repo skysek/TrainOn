@@ -5,6 +5,8 @@
 "CFBundleName" = "$(PRODUCT_NAME)";
 
 /* (No Commment) */
-"CFBundleShortVersionString" = "1.2";
+"CFBundleShortVersionString" = "1.0";
+
+
 
 

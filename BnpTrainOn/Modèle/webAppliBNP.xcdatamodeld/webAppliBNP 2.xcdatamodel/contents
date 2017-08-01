@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="15G31" minimumToolsVersion="Xcode 7.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="CATEGORIE" representedClassName=".CATEGORIE" syncable="YES">
+        <attribute name="cat_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="cat_nom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cat_order" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="COLLABORATEUR" representedClassName=".COLLABORATEUR" syncable="YES">
+        <attribute name="col_est_responsable" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="col_fonction" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="col_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="col_mail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="col_nom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="col_prenom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="col_telephone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ent_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="ENTREPRISE" representedClassName=".ENTREPRISE" syncable="YES">
+        <attribute name="ent_adresse" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ent_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="ent_nom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ent_telephone" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="LOGIN" representedClassName=".LOGIN" syncable="YES">
+        <attribute name="log_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="log_password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="log_test" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="log_username" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="MODULE" representedClassName=".MODULE" syncable="YES">
+        <attribute name="cat_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="mod_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mod_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="mod_nom" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="SESSION" representedClassName=".SESSION" syncable="YES">
+        <attribute name="ses_date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ses_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ses_heure_deb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ses_heure_fin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ses_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="ses_nom" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="SESSIONCOLLABORATEUR" representedClassName=".SESSIONCOLLABORATEUR" syncable="YES">
+        <attribute name="col_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="pre_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="prog_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="ses_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="SESSIONMODULE" representedClassName=".SESSIONMODULE" syncable="YES">
+        <attribute name="mod_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="ses_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="TMPANNEENCOUR" representedClassName=".TMPANNEENCOUR" syncable="YES">
+        <attribute name="value_annee" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="TMPMOISENCOUR" representedClassName=".TMPMOISENCOUR" syncable="YES">
+        <attribute name="value_mois" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="TMPSESSION" representedClassName=".TMPSESSION" syncable="YES">
+        <attribute name="ses_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="TMPSESSIONCONTACT" representedClassName=".TMPSESSIONCONTACT" syncable="YES">
+        <attribute name="col_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="TMPSESSIONMODULE" representedClassName=".TMPSESSIONMODULE" syncable="YES">
+        <attribute name="mod_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CATEGORIE" positionX="61" positionY="126" width="128" height="90"/>
+        <element name="COLLABORATEUR" positionX="61" positionY="-216" width="128" height="165"/>
+        <element name="ENTREPRISE" positionX="-135" positionY="-216" width="128" height="105"/>
+        <element name="LOGIN" positionX="-297" positionY="-216" width="128" height="105"/>
+        <element name="MODULE" positionX="-468" positionY="-9" width="128" height="105"/>
+        <element name="SESSION" positionX="61" positionY="-36" width="128" height="135"/>
+        <element name="SESSIONCOLLABORATEUR" positionX="-135" positionY="-45" width="128" height="103"/>
+        <element name="SESSIONMODULE" positionX="-297" positionY="-48" width="128" height="75"/>
+        <element name="TMPANNEENCOUR" positionX="63" positionY="252" width="128" height="60"/>
+        <element name="TMPMOISENCOUR" positionX="-135" positionY="252" width="128" height="60"/>
+        <element name="TMPSESSION" positionX="-299" positionY="252" width="128" height="60"/>
+        <element name="TMPSESSIONCONTACT" positionX="-135" positionY="99" width="128" height="60"/>
+        <element name="TMPSESSIONMODULE" positionX="-297" positionY="99" width="128" height="60"/>
+    </elements>
+</model>

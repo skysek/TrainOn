@@ -97,6 +97,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		35154F091DC1F7CA0003A787 /* webAppliBNP 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "webAppliBNP 2.xcdatamodel"; sourceTree = "<group>"; };
 		35234F5A1BEBA45B00C1643C /* photo_gestion_clients.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_gestion_clients.png; sourceTree = "<group>"; };
 		35234F5B1BEBA45B00C1643C /* photo_module_formation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_module_formation.png; sourceTree = "<group>"; };
 		35234F5C1BEBA45B00C1643C /* photo_planning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_planning.png; sourceTree = "<group>"; };
@@ -177,7 +178,7 @@
 		35E7219E1C08761C0059E5B6 /* ListeContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeContactViewController.swift; sourceTree = "<group>"; };
 		35E721A01C08A19D0059E5B6 /* CellContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellContactTableViewCell.swift; sourceTree = "<group>"; };
 		35EAA84B1BDA434500EC1F80 /* TrainON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainON.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		35EAA84E1BDA434500EC1F80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		35EAA84E1BDA434500EC1F80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Controlleur/AppDelegate.swift; sourceTree = "<group>"; };
 		35EAA8501BDA434500EC1F80 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		35EAA8531BDA434500EC1F80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		35EAA8561BDA434500EC1F80 /* webAppliBNP.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = webAppliBNP.xcdatamodel; sourceTree = "<group>"; };
@@ -286,6 +287,7 @@
 			children = (
 				352C6C781C5E8C3A00C745DE /* Localizable.strings */,
 				352C6C721C5E8C3A00C745DE /* InfoPlist.strings */,
+				35EAA84E1BDA434500EC1F80 /* AppDelegate.swift */,
 				35EAA8581BDA434500EC1F80 /* Assets.xcassets */,
 				35234F681BECFD0800C1643C /* Font */,
 				35426D981BDE6A890067B9C9 /* images */,
@@ -350,7 +352,6 @@
 				35E5E0841C0DF0ED00F8C128 /* AjoutContactViewController.swift */,
 				356B675C1C4390DE0065A78A /* AjoutEntrepriseViewController.swift */,
 				35ECE5651C18243D00514E95 /* AjoutSessionViewController.swift */,
-				35EAA84E1BDA434500EC1F80 /* AppDelegate.swift */,
 				3531909F1BF1013800260494 /* CategorieModulesTableViewController.swift */,
 				35E4F7251BFF300B0073C5FE /* CellCategorieModuleController.swift */,
 				35E721A01C08A19D0059E5B6 /* CellContactTableViewCell.swift */,
@@ -707,9 +708,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/BnpTrainOn/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = DMF.TrainONtest;
+				PRODUCT_BUNDLE_IDENTIFIER = DMF.TrainON;
 				PRODUCT_NAME = TrainON;
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 2.3;
@@ -724,11 +725,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/BnpTrainOn/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = DMF.TrainONtest;
+				PRODUCT_BUNDLE_IDENTIFIER = DMF.TrainON;
 				PRODUCT_NAME = TrainON;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -761,6 +763,7 @@
 		35EAA8551BDA434500EC1F80 /* webAppliBNP.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				35154F091DC1F7CA0003A787 /* webAppliBNP 2.xcdatamodel */,
 				35EAA8561BDA434500EC1F80 /* webAppliBNP.xcdatamodel */,
 			);
 			currentVersion = 35EAA8561BDA434500EC1F80 /* webAppliBNP.xcdatamodel */;

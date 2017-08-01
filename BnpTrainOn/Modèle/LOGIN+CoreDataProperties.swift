@@ -17,5 +17,6 @@ extension LOGIN {
     @NSManaged var log_id: NSNumber?
     @NSManaged var log_username: String?
     @NSManaged var log_password: String?
+    @NSManaged var log_test: String?
 
 }

@@ -16,6 +16,8 @@ class HTMLViewController: UIViewController {
         super.viewDidLoad()
 
         let url = NSURL (string: "http://grassroots2.fmgsam.com/bnp_va2_test/dashboard.html");
+        
+        //let url = NSURL (string: "http://www.preprod-bpeek.fmgsam.com/application/cr_horaires.html");
         let requestObj = NSURLRequest(URL: url!);
         webView.loadRequest(requestObj);
         // Do any additional setup after loading the view.

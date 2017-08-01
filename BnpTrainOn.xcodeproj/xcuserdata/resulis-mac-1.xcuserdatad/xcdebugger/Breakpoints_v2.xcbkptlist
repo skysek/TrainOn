@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BnpTrainOn/Controlleur/LoginViewController.swift"
-            timestampString = "491410477.975639"
+            timestampString = "499255175.351264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "383"
-            endingLineNumber = "383"
+            startingLineNumber = "384"
+            endingLineNumber = "384"
             landmarkName = "jsonTest()"
             landmarkType = "7">
          </BreakpointContent>

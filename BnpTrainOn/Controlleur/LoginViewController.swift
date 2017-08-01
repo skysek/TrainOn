@@ -94,7 +94,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         if count == 0 {
             
-            for i in 0 ..< 1 {
+            for _ in 0 ..< 1 {
                 let entityDescription = NSEntityDescription.entityForName("LOGIN", inManagedObjectContext: managedContext)
                 let users = LOGIN(entity: entityDescription!, insertIntoManagedObjectContext: managedContext)
                 
@@ -130,6 +130,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 
                 if "Apple" == loginTxtField.text && "dev" == passwordTxtField.text {
+                    //NSLog("Test Core Data : \(login.log_test)")
                     let plainString = jsonTest()
                     //let plainString = contents
                     let plainData = (plainString as NSString).dataUsingEncoding(NSUTF8StringEncoding)
